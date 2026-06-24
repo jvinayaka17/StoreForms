@@ -22,14 +22,29 @@
    }
 
 /* --- ADD THIS TO REMOVE THE ACTIVE BORDER OVERLAP --- */
-   .sd-element--active, .sv-element--active 
-   {
-     border-left-color: transparent !important;
-     border-right-color: transparent !important;
+   /* --- FORCE A SOLID CONTINUOUS BORDER --- */
+   
+   /* 1. Remove the active highlight bar on the left/sides */
+   .sd-element--active::before,
+   .sv-element--active::before,
+   .sd-question--active::before,
+   .sv-question--active::before {
+     display: none !important;
+     content: none !important;
    }
-   .sd-paneldynamic__row, .sd-paneldynamic__nested 
-   {
-     border: none !important;
+
+   /* 2. Turn off SurveyJS box-shadows and force a standard continuous border */
+   .sd-panel, .sd-element, .sd-question,
+   .sv-panel, .sv-element, .sv-question {
+     box-shadow: none !important;
+     border: 2px solid rgba(0, 174, 219, 1) !important; /* Change color/thickness as desired */
+     border-radius: 4px !important;
+   }
+
+   /* 3. Keep the border consistent even when clicked or active */
+   .sd-element--active, .sv-element--active,
+   .sd-question--active, .sv-question--active {
+     border: 2px solid rgba(0, 174, 219, 1) !important;
      box-shadow: none !important;
    }
  </style>
