@@ -20,6 +20,18 @@
      position: relative;
      background-color: rgb(242, 242, 242);
    }
+
+/* --- ADD THIS TO REMOVE THE ACTIVE BORDER OVERLAP --- */
+   .sd-element--active, .sv-element--active 
+   {
+     border-left-color: transparent !important;
+     border-right-color: transparent !important;
+   }
+   .sd-paneldynamic__row, .sd-paneldynamic__nested 
+   {
+     border: none !important;
+     box-shadow: none !important;
+   }
  </style>
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
