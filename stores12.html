@@ -1370,7 +1370,7 @@
         // --- 3. SUBMIT FUNCTION ---
         function sendData(survey) {
             // Replace with your actual Power Automate URL
-            const flowUrl = "https://default98804ab5274143968bcf8849c3ff04.be.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c7d9f1904f9143fdb4546977b85c79ab/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1x7F3GNe-_N6neEaaWZFYC4CAT-ZPM3LKjRCVPxvYB8";
+            const flowUrl = "https://default98804ab5274143968bcf8849c3ff04.be.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/83a6db5ebe244a64bc2ced2a0e460d06/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=I-68Ek8EP8ElqfAc1b6gENRRRLW1VM3Ze-igN79Hamw";
 
              // --- ADD THESE TWO LINES HERE ---
     const submissionDate = new Date().toISOString(); // Gets current date/time
@@ -1384,7 +1384,7 @@
                 dataType: 'json',
                 processData: false,
                 success: function (data) { 
-                  //  alert("Success! Your ration request has been submitted."); 
+                  //  alert("Success! Your request has been submitted."); 
                 },
                 error: function (xhr, status, error) {
                   //  alert("Request Sent.");
