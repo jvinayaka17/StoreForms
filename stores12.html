@@ -38,14 +38,19 @@
      border-radius: 4px !important;
    }
 
-   /* 3. Remove outlines/borders from inner questions and tables inside the panel */
-   .sd-panel .sd-question, 
-   .sd-panel .sd-element,
-   .sd-panel .sd-matrixdynamic,
-   .sv-panel .sv-question, 
-   .sv-panel .sv-element,
-   .sv-panel .sv-matrixdynamic {
+   /* 3. Forcefully strip borders/shadows from the nested tables and wrappers */
+   .sd-table,
+   .sd-table-wrapper,
+   .sd-table__footer,
+   .sd-matrixdynamic,
+   .sd-paneldynamic,
+   .sd-paneldynamic__footer,
+   .sv-table,
+   .sv-table-wrapper,
+   .sv-table__footer,
+   .sv-matrixdynamic {
      border: none !important;
+     border-color: transparent !important;
      box-shadow: none !important;
    }
  </style>
