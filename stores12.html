@@ -20,11 +20,9 @@
      position: relative;
      background-color: rgb(242, 242, 242);
    }
-
-/* --- ADD THIS TO REMOVE THE ACTIVE BORDER OVERLAP --- */
-   /* --- FORCE A SOLID CONTINUOUS BORDER --- */
+    /* --- TARGETED OUTER BORDERS ONLY --- */
    
-   /* 1. Remove the active highlight bar on the left/sides */
+   /* 1. Hide the active state highlight indicator */
    .sd-element--active::before,
    .sv-element--active::before,
    .sd-question--active::before,
@@ -33,18 +31,21 @@
      content: none !important;
    }
 
-   /* 2. Turn off SurveyJS box-shadows and force a standard continuous border */
-   .sd-panel, .sd-element, .sd-question,
-   .sv-panel, .sv-element, .sv-question {
+   /* 2. Apply the border ONLY to the outer panel card */
+   .sd-panel, .sv-panel {
      box-shadow: none !important;
-     border: 2px solid rgba(0, 174, 219, 1) !important; /* Change color/thickness as desired */
+     border: 2px solid rgba(0, 174, 219, 1) !important;
      border-radius: 4px !important;
    }
 
-   /* 3. Keep the border consistent even when clicked or active */
-   .sd-element--active, .sv-element--active,
-   .sd-question--active, .sv-question--active {
-     border: 2px solid rgba(0, 174, 219, 1) !important;
+   /* 3. Remove outlines/borders from inner questions and tables inside the panel */
+   .sd-panel .sd-question, 
+   .sd-panel .sd-element,
+   .sd-panel .sd-matrixdynamic,
+   .sv-panel .sv-question, 
+   .sv-panel .sv-element,
+   .sv-panel .sv-matrixdynamic {
+     border: none !important;
      box-shadow: none !important;
    }
  </style>
