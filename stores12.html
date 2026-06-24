@@ -20,9 +20,8 @@
      position: relative;
      background-color: rgb(242, 242, 242);
    }
-    /* --- TARGETED OUTER BORDERS ONLY --- */
+    /* --- BELOW CODE IS FOR TARGETED OUTER BORDERS ONLY --- */
    
-   /* 1. Hide the active state highlight indicator */
    .sd-element--active::before,
    .sv-element--active::before,
    .sd-question--active::before,
@@ -31,7 +30,7 @@
      content: none !important;
    }
 
-   /* 2. Apply the border ONLY to the outer panel card */
+   /* 2. Applying the border ONLY to the outer panel card */
    .sd-panel, .sv-panel {
      box-shadow: none !important;
      border: 2px solid rgba(0, 174, 219, 1) !important;
