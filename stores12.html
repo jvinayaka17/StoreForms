@@ -1160,272 +1160,181 @@
 
 
             };
-//surveyJS JSON file in the below block
+//surveyJS JSON file in the block below
             const surveyJson = 
             {
-                "title": "24 Hour Ration ORPs Demand Form",
-                // \n forces a new line
-                "description": "24 hour Rations ORPS are only issued for Royal Marines Cadets Military Training.\nDemands need to be at SCC Stores at least 6 weeks (Working Weeks) before the event.",
-                "logo": "https://api.surveyjs.io/private/Surveys/files?name=cbbe6ea2-8940-4f57-8b42-1ffa1093c555",
-                "logoHeight": "100px",
-                "logoPosition": "left", // Force logo LEFT in JSON
-                "logoFit": "contain",
-                "completedHtml": "<h3>Thank you for completing the form.You'll receive a copy of your submitted form by email shortly. Your form will be submitted for approval.</h3>",
-                "pages": [
-                    {
-                        "name": "page1",
-                        "elements": [
-                            {
-                                "type": "panel",
-                                "name": "selectionPanel",
-                                "elements": [
-                                    {
-                                        "type": "dropdown",
-                                        "name": "areas",
-                                        "title": "Area/Company",
-                                        "isRequired": true,
-                                        "width": "33%", // Forces 1/3 width
-                                        "minWidth": "200px"
-                                    },
-                                    {
-                                        "type": "dropdown",
-                                        "name": "districts",
-                                        "startWithNewLine": false, // Forces same line
-                                        "title": "District/Troop",
-                                        "isRequired": true,
-                                        "width": "33%", // Forces 1/3 width
-                                        "minWidth": "200px"
-                                    },
-                                    {
-                                        "type": "dropdown",
-                                        "name": "units",
-                                        "startWithNewLine": false, // Forces same line
-                                        "title": "Unit/Detachment",
-                                        "isRequired": true,
-                                        "width": "33%", // Forces 1/3 width
-                                        "minWidth": "200px"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "panel",
-                                "name": "panel5",
-                                "title": "Specify the number of boxes to order (each box contains 10 ration packs).",
-                                "elements": [
-                                    { "type": "text", 
-                                      "name": "Standard", 
-                                      "minWidth": "150px", 
-                                      "maxWidth": "70%",
-                                      "title": "Standard 24 hour ORPs Quantity:", 
-                                      "inputType": "number", 
-                                      "min": 0,
-                                      "max": 50 
-                                    },
-                                    { "type": "text", 
-                                      "name": "Veg", 
-                                      "minWidth": "150px", 
-                                      "maxWidth": "70%",
-                                      "startWithNewLine": false, 
-                                      "title": "Vegetarian Quantity", 
-                                      "inputType": "number", 
-                                      "min": 0,
-                                      "max": 20 
-                                    },
-                                    { "type": "text", 
-                                      "name": "kosher", 
-                                      "minWidth": "150px",
-                                      "maxWidth": "70%", 
-                                      "startWithNewLine": false, 
-                                      "title": "Kosher Quantity", 
-                                      "inputType": "number", 
-                                      "min": 0,
-                                      "max": 20 
-                                    },
-                                    { "type": "text", 
-                                      "name": "Halal", 
-                                      "minWidth": "150px",
-                                      "maxWidth": "70%", 
-                                      "startWithNewLine": false, 
-                                      "title": "Halal Quantity", 
-                                      "inputType": "number",
-                                      "min": 0,
-                                      "max": 20
-                                    },
-                                    { "type": "text", 
-                                      "name": "Sikh/Hindu", 
-                                      "minWidth": "150px",
-                                      "maxWidth": "70%", 
-                                      "startWithNewLine": false, 
-                                      "title": "Sikh/Hindu Quantity", 
-                                      "inputType": "number", 
-                                      "min": 0,
-                                      "max": 20 
-                                     }
-                                ]
-                            },
-                            {
-                                "type": "panel",
-                                "name": "panel2",
-                                "title": "These items can only be ordered in full box quantities and are NOT available if your order is being collected from SCC Stores.",
-                                "elements": [
-                                    { "type": "text", 
-                                      "name": "Hexi Cooker", 
-                                      "title": "Ration Heater Quantity (1 box = 100)", 
-                                      "inputType": "number", 
-                                      "min": 0,
-                                      "max": 20 
-                                    },
-                                    { "type": "text", 
-                                      "name": "Hexi fuel", 
-                                      "startWithNewLine": false, 
-                                      "title": "Ration Heater Fuel Quantity (1 box = 48)", 
-                                      "inputType": "number", 
-                                      "min": 0,
-                                      "max": 30 
-                                    },
-                                    { "type": "comment", 
-                                      "name": "Reason", 
-                                      "isRequired": true,
-                                      "title": "Reason for request" 
-                                    },
-                                    {
-                                        "type": "panel",
-                                        "name": "panel3",
-                                        "title": "Delivery Details",
-                                        "elements": [
-                                            { "type": "text", 
-                                              "name": "collectfrom", 
-                                              "isRequired": true,
-                                              "title": "Provide the name of the MOD Site or Establishment where the order will be collected",
-                                              "maxLength": 0
-                                            },
-                                            { "type": "text", 
-                                              "name": "Collectiondatetime", 
-                                              "title": "Specify the date & time of Collection", 
-                                              "isRequired": true,
-                                              "inputType": "datetime-local" 
-                                            },
-                                            {
-                                              "type": "text",
-                                              "name": "personcollecting",
-                                              "title": "Person Collecting",
-                                              "isRequired": true,
-                                              "maxLength": 0
-                                            },
-                                            {
-                                              "type": "text",
-                                              "name": "collectoremail",
-                                              "title": "Email address of the person collecting",
-                                              "isRequired": true,
-                                              "maxLength": 0
-                                            },
-                                            {
-                                              "type": "text",
-                                              "name": "collectormobile",
-                                              "title": "Civilian Mobile number",
-                                              "isRequired": true,
-                                              "maxLength": 0
-                                            }
-                                          ]
-                                         }
-                                       ]
-                                     }
-                                   ]
-                                 },
-                    {
-                        "name": "page2",
-                        "elements": [
-                            {
-                                "type": "panel",
-                                "name": "panel4",
-                                "title": "Westminster Information",
-                                "elements": [
-                                    { "type": "text", 
-                                      "name": "code", 
-                                      "minWidth": "200px", 
-                                      "maxWidth": "70%", 
-                                      "title": "WM Course code",
-                                      "isRequired": true
-                                    },
-                                    { "type": "text", 
-                                      "name": "Course name", 
-                                      "minWidth": "200px", 
-                                      "maxWidth": "70%", 
-                                      "startWithNewLine": false, 
-                                      "title": "Course Name",
-                                      "isRequired": true
-                                    },
-                                    { "type": "text", 
-                                      "name": "start date", 
-                                      "minWidth": "200px", 
-                                      "maxWidth": "70%", 
-                                      "startWithNewLine": false, 
-                                      "title": "Course start date", 
-                                      "isRequired": true, 
-                                      "inputType": "date" 
-                                    },
-                                    { "type": "text", 
-                                      "name": "end date", 
-                                      "minWidth": "200px", 
-                                      "maxWidth": "70%", 
-                                      "startWithNewLine": false, 
-                                      "title": "Course end date", 
-                                      "isRequired": true, 
-                                      "inputType": "date" 
-                                    },
-                                    {
-                                      "type": "text",
-                                      "name": "duration",
-                                      "minWidth": "200px",
-                                      "maxWidth": "70%",
-                                      "startWithNewLine": false,
-                                      "title": "Course Duration",
-                                      "setValueExpression": "dateDiff({start date},{end date}, \"days\") +1",
-                                      "readOnly": true,
-                                      "inputType": "number"
-                                    },
-                                    { "type": "text", 
-                                      "name": "CFAVs", 
-                                      "maxWidth": "70%",
-                                      "title": "Number of CFAVs", 
-                                      "isRequired": true,
-                                      "inputType": "number" 
-                                    },
-                                    { "type": "text", 
-                                      "name": "cadets", 
-                                      "maxWidth": "70%",
-                                      "startWithNewLine": false, 
-                                      "title": "Number of Cadets", 
-                                      "isRequired": true,
-                                      "inputType": "number" 
-                                    },
-                                    { "type": "text", 
-                                      "name": "total", 
-                                      "maxWidth": "70%",
-                                      "startWithNewLine": false, 
-                                      "title": "Total number of Personnel", 
-                                      "setValueExpression": "{CFAVs}+{cadets}", 
-                                      "readOnly": true 
-                                    },
-                                    {
-                                        "type": "panel",
-                                        "name": "panel6",
-                                        "title": "Request from",
-                                        "elements": [
-                                            { "type": "text", "name": "requestor", "title": "Requestor name", "isRequired": true },
-                                            { "type": "text", "name": "requestoremail", "isRequired": true, "title": "Email" },
-                                            { "type": "text", "name": "rank", "isRequired": true, "title": "Rank" },
-                                            { "type": "text", "name": "WMPIN", "isRequired": true, "title": "WM PNumber" },
-                                            { "type": "text", "name": "appointment", "isRequired": true, "title": "WM Appointment" }
-                                           // { "type": "text", "name": "daterequested", "title": "Date", "isRequired": true, "inputType": "date" }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "showQuestionNumbers": "on"
+  "title": "REPORT OF LOSS OR DAMAGE OF MINISTRY OF DEFENCE STORES",
+  "description": "In accordance with Sea Cadet Regulations\nSupersedes all previous copies which should now be destroyed",
+  "logo": "https://api.surveyjs.io/private/Surveys/files?name=ae10cd10-0577-482c-b4a9-d75c8d08d14e",
+  "logoHeight": "200px",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "dropdown",
+          "name": "areas",
+          "title": "Area/Company"
+        },
+        {
+          "type": "dropdown",
+          "name": "districts",
+          "startWithNewLine": false,
+          "title": "District/Troop"
+        },
+        {
+          "type": "dropdown",
+          "name": "units",
+          "startWithNewLine": false,
+          "title": "Unit/Detachment"
+        },
+        {
+          "type": "text",
+          "name": "causeofloss",
+          "title": "Cause of loss or damage (i.e., Fire, Burglary, Storm etc.,)"
+        },
+        {
+          "type": "boolean",
+          "name": "policeadvised",
+          "title": "Have the Police been advised?"
+        },
+        {
+          "type": "text",
+          "name": "policecertificate",
+          "visibleIf": "{policeadvised} = true",
+          "title": "Please provide Police Certificate or Crime Report Number",
+          "validators": [
+            {
+              "type": "expression"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "datestolen",
+          "title": "Date and circumstances in which the articles were lost, stolen or damaged"
+        },
+        {
+          "type": "text",
+          "name": "custodyitems",
+          "title": "Who had custody of the items at the time of the actual or alleged loss, theft, or damage (please specify the type of premises, e.g. building, storage facility, etc.)?"
+        },
+        {
+          "type": "boolean",
+          "name": "Mortiselocks",
+          "title": "Are Mortise Locks fitted?"
+        },
+        {
+          "type": "text",
+          "name": "question1",
+          "visibleIf": "{Mortiselocks} = true",
+          "title": "Please provide further information",
+          "description": "need wording update from GW"
+        },
+        {
+          "type": "text",
+          "name": "storeditems",
+          "title": "How were the items stored at the time of the loss, and what security measures were in place?"
+        },
+        {
+          "type": "boolean",
+          "name": "enquiryheld",
+          "title": "Whether an enquiry was conducted?"
+        },
+        {
+          "type": "text",
+          "name": "enquirydetails",
+          "visibleIf": "{enquiryheld} = true",
+          "title": "Please provide further information of the enquiry"
+        },
+        {
+          "type": "boolean",
+          "name": "itemsrecovered",
+          "title": "Were the items recovered?"
+        },
+        {
+          "type": "text",
+          "name": "actionsrecovery",
+          "visibleIf": "{itemsrecovered} = false",
+          "title": "If not, what actions were taken to attempt their recovery."
+        },
+        {
+          "type": "text",
+          "name": "futureaction",
+          "title": "What action, if any, has been taken to prevent this from happening again?"
+        },
+        {
+          "type": "panel",
+          "name": "storesdetails",
+          "title": "STORES DETAILS",
+          "elements": [
+            {
+              "type": "matrixdynamic",
+              "name": "tableofitems",
+              "titleLocation": "hidden",
+              "columns": [
+                {
+                  "name": "nsn",
+                  "title": "NSN"
+                },
+                {
+                  "name": "description",
+                  "title": "Description"
+                },
+                {
+                  "name": "qty",
+                  "title": "Quantity"
+                },
+                {
+                  "name": "condition",
+                  "title": "Condition & damage details"
+                }
+              ],
+              "choices": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cellType": "text",
+              "rowCount": 1,
+              "allowRowReorder": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "declaration1",
+      "title": "DECLARATION",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "declaration",
+          "title": "I hereby declare that all the details given by me on this form are, to the best of my knowledge, true and complete.",
+          "elements": [
+            {
+              "type": "text",
+              "name": "COname",
+              "title": "Full Name"
+            },
+            {
+              "type": "text",
+              "name": "rank",
+              "title": "Rank"
+            },
+            {
+              "type": "text",
+              "name": "PIN",
+              "title": "CFAV Pnumber"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "headerView": "advanced"
             };
 
             const survey = new Survey.Model(surveyJson);
