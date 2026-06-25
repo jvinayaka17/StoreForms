@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+ <meta name="msapplication-TileImage" content="https://www.sea-cadets.org/img/favicon/favicon-16x16.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="https://www.sea-cadets.org/img/favicon/favicon-16x16.png">
+ <title>Sea Cadets - Stores12</title>
+ <style>
+   .footer_container {
+     position: absolute;
+     bottom: 0;
+     width: 95%;
+     height: 0px;
+     background-color: rgb(242, 242, 242);
+   }
+ 
+   .body_container {
+     min-height: 98.2vh;
+     margin: 0;
+     position: relative;
+     background-color: rgb(242, 242, 242);
+   }
+    /* --- BELOW CODE IS FOR TARGETED OUTER BORDERS ONLY --- */
+   
+   .sd-element--active::before,
+   .sv-element--active::before,
+   .sd-question--active::before,
+   .sv-question--active::before {
+     display: none !important;
+     content: none !important;
+   }
+
+   /* 2. Applying the border ONLY to the outer panel card */
+   .sd-panel, .sv-panel {
+     box-shadow: none !important;
+     border: 2px solid rgba(0, 174, 219, 1) !important;
+     border-radius: 4px !important;
+   }
+
+   /* 3. Forcefully strip borders/shadows from the nested tables and wrappers */
+   .sd-table,
+   .sd-table-wrapper,
+   .sd-table__footer,
+   .sd-matrixdynamic,
+   .sd-paneldynamic,
+   .sd-paneldynamic__footer,
+   .sv-table,
+   .sv-table-wrapper,
+   .sv-table__footer,
+   .sv-matrixdynamic {
+     border: none !important;
+     border-color: transparent !important;
+     box-shadow: none !important;
+   }
+/* Force the button text to turn white when hovered */
+.sd-matrixdynamic__add-btn:hover,
+.sd-btn--action:hover,
+.sv-matrixdynamic__add-btn:hover {
+  color: #ffffff !important;
+}
+ </style>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
+ <script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+</head>
+ 
+<body>
+ <div class="body_container">
+   <div id="surveyContainer"></div>
+ 
+
+     <script>
+         // --- 1. DATA CONFIGURATION ---
+         const areasData = [
+             { "areaname": "Eastern Area", "areavalue": "Eastern Area" },
+             { "areaname": "London Area", "areavalue": "London Area" },
+             { "areaname": "North West Area", "areavalue": "North West Area" },
+             { "areaname": "Northern Area", "areavalue": "Northern Area" },
+             { "areaname": "South West Area", "areavalue": "South West Area" },
+             { "areaname": "Southern Area", "areavalue": "Southern Area" },
+             { "areaname": "Crosby BS", "areavalue": "Crosby BS" },
+             { "areaname": "Derwenthaugh BS", "areavalue": "Derwenthaugh BS" },
+             { "areaname": "Midland BS", "areavalue": "Midland BS" },
+             { "areaname": "Thrapston BS", "areavalue": "Thrapston BS" },
+             { "areaname": "Welsh Harp BS", "areavalue": "Welsh Harp BS" },
+             { "areaname": "Whale Island BS", "areavalue": "Whale Island BS" }
+         ];
+
+         const districtsData = [
+             { "districtname": "Crosby BS", "districtvalue": "Crosby BS", "areavalue": "Crosby BS" },
+             { "districtname": "Derwenthaugh BS", "districtvalue": "Derwenthaugh BS", "areavalue": "Derwenthaugh BS" },
+             { "districtname": "Midland BS", "districtvalue": "Midland BS", "areavalue": "Midland BS" },
+             { "districtname": "Thrapston BS", "districtvalue": "Thrapston BS", "areavalue": "Thrapston BS" },
+             { "districtname": "Welsh Harp BS", "districtvalue": "Welsh Harp BS", "areavalue": "Welsh Harp BS" },
+             { "districtname": "Whale Island BS", "districtvalue": "Whale Island BS", "areavalue": "Whale Island BS" },
+             { "districtname": "North District", "districtvalue": "North District", "areavalue": "Eastern Area" },
+             { "districtname": "East District", "districtvalue": "East District", "areavalue": "Eastern Area" },
+             { "districtname": "South District", "districtvalue": "South District", "areavalue": "Eastern Area" },
+             { "districtname": "West District", "districtvalue": "West District", "areavalue": "Eastern Area" },
+             { "districtname": "North East District", "districtvalue": "North East District", "areavalue": "Eastern Area" },
+             { "districtname": "Central District", "districtvalue": "Central District", "areavalue": "Eastern Area" },
+             { "districtname": "North West District", "districtvalue": "North West District", "areavalue": "Eastern Area" },
+             { "districtname": "South East District", "districtvalue": "South East District", "areavalue": "Eastern Area" },
+             { "districtname": "X-Ray Company", "districtvalue": "X-Ray Company", "areavalue": "Eastern Area" },
+             { "districtname": "London Eastern District", "districtvalue": "London Eastern District", "areavalue": "London Area" },
+             { "districtname": "London Northern District", "districtvalue": "London Northern District", "areavalue": "London Area" },
+             { "districtname": "London Southern District", "districtvalue": "London Southern District", "areavalue": "London Area" },
+             { "districtname": "London Western District", "districtvalue": "London Western District", "areavalue": "London Area" },
+             { "districtname": "Lima Company", "districtvalue": "Lima Company", "areavalue": "London Area" },
+             { "districtname": "Chestaffs District", "districtvalue": "Chestaffs District", "areavalue": "North West Area" },
+             { "districtname": "Lakeland District", "districtvalue": "Lakeland District", "areavalue": "North West Area" },
+             { "districtname": "Manchester District", "districtvalue": "Manchester District", "areavalue": "North West Area" },
+             { "districtname": "Merseyside East District", "districtvalue": "Merseyside East District", "areavalue": "North West Area" },
+             { "districtname": "Merseyside West District", "districtvalue": "Merseyside West District", "areavalue": "North West Area" },
+             { "districtname": "Wales North District", "districtvalue": "Wales North District", "areavalue": "North West Area" },
+             { "districtname": "East Lancashire District", "districtvalue": "East Lancashire District", "areavalue": "North West Area" },
+             { "districtname": "West Lancashire District", "districtvalue": "West Lancashire District", "areavalue": "North West Area" },
+             { "districtname": "Bravo Company", "districtvalue": "Bravo Company", "areavalue": "North West Area" },
+             { "districtname": "Bermuda District", "districtvalue": "Bermuda District", "areavalue": "Northern Area" },
+             { "districtname": "Clyde North District", "districtvalue": "Clyde North District", "areavalue": "Northern Area" },
+             { "districtname": "Clyde South District", "districtvalue": "Clyde South District", "areavalue": "Northern Area" },
+             { "districtname": "Edinburgh District", "districtvalue": "Edinburgh District", "areavalue": "Northern Area" },
+             { "districtname": "Fife and Tayside District", "districtvalue": "Fife and Tayside District", "areavalue": "Northern Area" },
+             { "districtname": "Grampian District", "districtvalue": "Grampian District", "areavalue": "Northern Area" },
+             { "districtname": "Highland District", "districtvalue": "Highland District", "areavalue": "Northern Area" },
+             { "districtname": "Northumberland District", "districtvalue": "Northumberland District", "areavalue": "Northern Area" },
+             { "districtname": "Teeside District", "districtvalue": "Teeside District", "areavalue": "Northern Area" },
+             { "districtname": "Tyne South District", "districtvalue": "Tyne South District", "areavalue": "Northern Area" },
+             { "districtname": "Northern Ireland District", "districtvalue": "Northern Ireland District", "areavalue": "Northern Area" },
+             { "districtname": "Yankee Company", "districtvalue": "Yankee Company", "areavalue": "Northern Area" },
+             { "districtname": "Avon District", "districtvalue": "Avon District", "areavalue": "South West Area" },
+             { "districtname": "Cornwall District", "districtvalue": "Cornwall District", "areavalue": "South West Area" },
+             { "districtname": "Devon District", "districtvalue": "Devon District", "areavalue": "South West Area" },
+             { "districtname": "Mercia District", "districtvalue": "Mercia District", "areavalue": "South West Area" },
+             { "districtname": "Severn District", "districtvalue": "Severn District", "areavalue": "South West Area" },
+             { "districtname": "Somerset & Dorset District", "districtvalue": "Somerset & Dorset District", "areavalue": "South West Area" },
+             { "districtname": "Wales South District", "districtvalue": "Wales South District", "areavalue": "South West Area" },
+             { "districtname": "Wales West District", "districtvalue": "Wales West District", "areavalue": "South West Area" },
+             { "districtname": "Warwickshire District", "districtvalue": "Warwickshire District", "areavalue": "South West Area" },
+             { "districtname": "Alpha Company", "districtvalue": "Alpha Company", "areavalue": "South West Area" },
+             { "districtname": "Berkshire District", "districtvalue": "Berkshire District", "areavalue": "Southern Area" },
+             { "districtname": "East Kent District", "districtvalue": "East Kent District", "areavalue": "Southern Area" },
+             { "districtname": "Oxon & Bucks District", "districtvalue": "Oxon & Bucks District", "areavalue": "Southern Area" },
+             { "districtname": "South Central District", "districtvalue": "South Central District", "areavalue": "Southern Area" },
+             { "districtname": "Surrey District", "districtvalue": "Surrey District", "areavalue": "Southern Area" },
+             { "districtname": "Sussex District", "districtvalue": "Sussex District", "areavalue": "Southern Area" },
+             { "districtname": "Wessex District", "districtvalue": "Wessex District", "areavalue": "Southern Area" },
+             { "districtname": "West Kent District", "districtvalue": "West Kent District", "areavalue": "Southern Area" },
+             { "districtname": "Zulu Company", "districtvalue": "Zulu Company", "areavalue": "Southern Area" }
+         ];
+
+         const unitsData = [
+             { "unitname": "Crosby BS", "unitvalue": "Crosby BS", "districtvalue": "Crosby BS" },
+             { "unitname": "Derwenthaugh BS", "unitvalue": "Derwenthaugh BS", "districtvalue": "Derwenthaugh BS" },
+             { "unitname": "Midland BS", "unitvalue": "Midland BS", "districtvalue": "Midland BS" },
+             { "unitname": "Thrapston BS", "unitvalue": "Thrapston BS", "districtvalue": "Thrapston BS" },
+             { "unitname": "Welsh Harp BS", "unitvalue": "Welsh Harp BS", "districtvalue": "Welsh Harp BS" },
+             { "unitname": "Whale Island BS", "unitvalue": "Whale Island BS", "districtvalue": "Whale Island BS" },
+             { "unitname": "BRADFORD", "unitvalue": "BRADFORD", "districtvalue": "North District" },
+             { "unitname": "BRADFORD(RMCD)", "unitvalue": "BRADFORD(RMCD)", "districtvalue": "North District" },
+             { "unitname": "CASTLEFORD", "unitvalue": "CASTLEFORD", "districtvalue": "North District" },
+             { "unitname": "CITY OF LEEDS", "unitvalue": "CITY OF LEEDS", "districtvalue": "North District" },
+             { "unitname": "CITY OF LEEDS (RMCD)", "unitvalue": "CITY OF LEEDS (RMCD)", "districtvalue": "North District" },
+             { "unitname": "DEWSBURY", "unitvalue": "DEWSBURY", "districtvalue": "North District" },
+             { "unitname": "HARROGATE", "unitvalue": "HARROGATE", "districtvalue": "North District" },
+             { "unitname": "HUDDERSFIELD", "unitvalue": "HUDDERSFIELD", "districtvalue": "North District" },
+             { "unitname": "KEIGHLEY", "unitvalue": "KEIGHLEY", "districtvalue": "North District" },
+             { "unitname": "KEIGHLEY (RMCD)", "unitvalue": "KEIGHLEY (RMCD)", "districtvalue": "North District" },
+             { "unitname": "WAKEFIELD", "unitvalue": "WAKEFIELD", "districtvalue": "North District" },
+             { "unitname": "CITY OF LEEDS (JUNIOR SECTION 1)", "unitvalue": "CITY OF LEEDS (JUNIOR SECTION 1)", "districtvalue": "North District" },
+             { "unitname": "HARROGATE (JUNIOR SECTION 1)", "unitvalue": "HARROGATE (JUNIOR SECTION 1)", "districtvalue": "North District" },
+             { "unitname": "KEIGHLEY (JUNIOR SECTION 1)", "unitvalue": "KEIGHLEY (JUNIOR SECTION 1)", "districtvalue": "North District" }
+         ];
+
+         // --- 2. SURVEY CONFIGURATION ---
+         const surveyJSON = {
+             title: "Store Request Form",
+             logoPosition: "right",
+             pages: [
+                 {
+                     name: "page1",
+                     elements: [
+                         {
+                             type: "dropdown",
+                             name: "area",
+                             title: "Select Area:",
+                             choices: areasData,
+                             choicesByUrl: {
+                                 url: ""
+                             },
+                             optionsCaption: "-- Select Area --"
+                         },
+                         {
+                             type: "dropdown",
+                             name: "district",
+                             title: "Select District:",
+                             choices: [],
+                             optionsCaption: "-- Select District --",
+                             visibleIf: "{area} notempty"
+                         },
+                         {
+                             type: "dropdown",
+                             name: "unit",
+                             title: "Select Unit:",
+                             choices: [],
+                             optionsCaption: "-- Select Unit --",
+                             visibleIf: "{district} notempty"
+                         }
+                     ]
+                 }
+             ]
+         };
+
+         window.survey = new Survey.Model(surveyJSON);
+         var currentDropdown = null;
+
+         survey.onValueChanged.add(function(sender, options) {
+             if (options.name === "area") {
+                 var selectedArea = options.value;
+                 var districtChoices = districtsData.filter(d => d.areavalue === selectedArea).map(d => ({
+                     text: d.districtname,
+                     value: d.districtvalue
+                 }));
+                 var districtQuestion = survey.getQuestionByName("district");
+                 districtQuestion.choices = districtChoices;
+                 districtQuestion.value = null;
+                 
+                 var unitQuestion = survey.getQuestionByName("unit");
+                 unitQuestion.choices = [];
+                 unitQuestion.value = null;
+             }
+
+             if (options.name === "district") {
+                 var selectedDistrict = options.value;
+                 var unitChoices = unitsData.filter(u => u.districtvalue === selectedDistrict).map(u => ({
+                     text: u.unitname,
+                     value: u.unitvalue
+                 }));
+                 var unitQuestion = survey.getQuestionByName("unit");
+                 unitQuestion.choices = unitChoices;
+                 unitQuestion.value = null;
+             }
+         });
+
+         $("#surveyContainer").Survey({model: survey});
+     </script>
+ </div>
+</body>
+</html>
