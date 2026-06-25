@@ -22,14 +22,20 @@
    }
     /* --- BELOW CODE IS FOR TARGETED OUTER BORDERS ONLY --- */
    
-   .sd-element--active::before,
+  /* .sd-element--active::before,
    .sv-element--active::before,
    .sd-question--active::before,
    .sv-question--active::before {
      display: none !important;
      content: none !important;
    }
-
+/*
+     /* Replace your existing Section 2 CSS with this: */
+.sd-element, .sv-element {
+  box-shadow: none !important;
+  border: 2px solid rgba(0, 174, 219, 1) !important;
+  border-radius: 4px !important;
+}
    /* 2. Applying the border ONLY to the outer panel card */
    .sd-panel, .sv-panel {
      box-shadow: none !important;
@@ -38,7 +44,7 @@
    }
 
    /* 3. Forcefully strip borders/shadows from the nested tables and wrappers */
-   .sd-table,
+/*   .sd-table,
    .sd-table-wrapper,
    .sd-table__footer,
    .sd-matrixdynamic,
@@ -53,6 +59,7 @@
      box-shadow: none !important;
    }
 /* Force the button text to turn white when hovered */
+     
 .sd-matrixdynamic__add-btn:hover,
 .sd-btn--action:hover,
 .sv-matrixdynamic__add-btn:hover {
