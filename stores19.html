@@ -31,17 +31,18 @@
    }
 /*
      /* Replace your existing Section 2 CSS with this: */
-.sd-element, .sv-element {
+.sd-element:not(.sd-panel__content .sd-element),
+ .sv-element:not(.sv-panel__content .sv-element) {
   box-shadow: none !important;
   border: 2px solid rgba(0, 174, 219, 1) !important;
   border-radius: 4px !important;
 }
    /* 2. Applying the border ONLY to the outer panel card */
-   .sd-panel, .sv-panel {
-     box-shadow: none !important;
-     border: 2px solid rgba(0, 174, 219, 1) !important;
-     border-radius: 4px !important;
-   }
+   .sd-panel__content .sd-element,
+   .sv-panel__content .sv-element {
+   border: none !important;
+   box-shadow: none !important;
+ }
 
    /* 3. Forcefully strip borders/shadows from the nested tables and wrappers */
 /*   .sd-table,
