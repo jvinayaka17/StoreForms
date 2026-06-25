@@ -174,7 +174,7 @@
 
          // --- 2. SURVEY CONFIGURATION ---
          const surveyJSON = {
-             "title": "ST19 - Request Authorisation Form",
+             "title": "ST19 - REQUEST AUTHORISATION FORM",
              "logo": "https://api.surveyjs.io/private/Surveys/files?name=ab72e713-41b1-46cd-9100-509376bc0c95",
              "logoHeight": "200px",
              "pages": [
@@ -183,28 +183,20 @@
                      "elements": [
                          {
                              "type": "dropdown",
-                             "name": "area",
-                             "title": "Area/Company",
-                             "choices": areasData,
-                             "optionsCaption": "-- Select Area --"
+                             "name": "areas",
+                             "title": "Area/Company"
                          },
                          {
                              "type": "dropdown",
                              "name": "districts",
                              "startWithNewLine": false,
-                             "title": "District/Troop",
-                             "choices": [],
-                             "optionsCaption": "-- Select District --",
-                             "visibleIf": "{area} notempty"
+                             "title": "District/Troop"
                          },
                          {
                              "type": "dropdown",
                              "name": "units",
                              "startWithNewLine": false,
-                             "title": "Unit/Detachment",
-                             "choices": [],
-                             "optionsCaption": "-- Select Unit --",
-                             "visibleIf": "{districts} notempty"
+                             "title": "Unit/Detachment"
                          },
                          {
                              "type": "text",
@@ -212,36 +204,46 @@
                              "title": "Substore Manager Details"
                          },
                          {
-                             "type": "matrixdynamic",
+                             "type": "panel",
                              "name": "storesdetails",
-                             "title": "Stores Details",
-                             "columns": [
-                                 {
-                                     "name": "nsn",
-                                     "title": "NSN",
-                                     "cellType": "text"
-                                 },
-                                 {
-                                     "name": "description",
-                                     "title": "Description",
-                                     "cellType": "text"
-                                 },
-                                 {
-                                     "name": "qty",
-                                     "title": "Quantity",
-                                     "cellType": "text"
-                                 }
-                             ],
-                             "choices": [
-                                 1,
-                                 2,
-                                 3,
-                                 4,
-                                 5
-                             ],
-                             "rowCount": 1
-                         },
-                         {
+                             "title": "STORES DETAILS",
+                             "elements": [
+             {
+              "type": "matrixdynamic",
+              "name": "tableofitems",
+              "titleLocation": "hidden",
+              "columns": [
+                {
+                  "name": "nsn",
+                  "title": "NSN"
+                },
+                {
+                  "name": "description",
+                  "title": "Description"
+                },
+                {
+                  "name": "qty",
+                  "title": "Quantity"
+                },
+              ],
+              "choices": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "cellType": "text",
+              "rowCount": 1
+               }
+              ]
+            }
+           ]
+           },
+            "name": "declaration1",
+            "title": "DECLARATION",
+            "elements": [
+                        {
                              "type": "panel",
                              "name": "notes",
                              "title": "NOTES AND DECLARATION",
