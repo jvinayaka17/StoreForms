@@ -4,7 +4,7 @@
     <meta charset="utf-8">
  <meta name="msapplication-TileImage" content="https://www.sea-cadets.org/img/favicon/favicon-16x16.png">
  <link rel="icon" type="image/png" sizes="16x16" href="https://www.sea-cadets.org/img/favicon/favicon-16x16.png">
- <title>Sea Cadets - Stores12</title>
+ <title>Sea Cadets - Stores19</title>
  <style>
    .footer_container {
      position: absolute;
@@ -174,42 +174,103 @@
 
          // --- 2. SURVEY CONFIGURATION ---
          const surveyJSON = {
-             title: "Store Request Form",
-             logoPosition: "right",
-             pages: [
+             "title": "ST19 - Request Authorisation Form",
+             "logo": "https://api.surveyjs.io/private/Surveys/files?name=ab72e713-41b1-46cd-9100-509376bc0c95",
+             "logoHeight": "200px",
+             "pages": [
                  {
-                     name: "page1",
-                     elements: [
+                     "name": "page1",
+                     "elements": [
                          {
-                             type: "dropdown",
-                             name: "area",
-                             title: "Select Area:",
-                             choices: areasData,
-                             choicesByUrl: {
-                                 url: ""
-                             },
-                             optionsCaption: "-- Select Area --"
+                             "type": "dropdown",
+                             "name": "area",
+                             "title": "Area/Company",
+                             "choices": areasData,
+                             "optionsCaption": "-- Select Area --"
                          },
                          {
-                             type: "dropdown",
-                             name: "district",
-                             title: "Select District:",
-                             choices: [],
-                             optionsCaption: "-- Select District --",
-                             visibleIf: "{area} notempty"
+                             "type": "dropdown",
+                             "name": "districts",
+                             "startWithNewLine": false,
+                             "title": "District/Troop",
+                             "choices": [],
+                             "optionsCaption": "-- Select District --",
+                             "visibleIf": "{area} notempty"
                          },
                          {
-                             type: "dropdown",
-                             name: "unit",
-                             title: "Select Unit:",
-                             choices: [],
-                             optionsCaption: "-- Select Unit --",
-                             visibleIf: "{district} notempty"
+                             "type": "dropdown",
+                             "name": "units",
+                             "startWithNewLine": false,
+                             "title": "Unit/Detachment",
+                             "choices": [],
+                             "optionsCaption": "-- Select Unit --",
+                             "visibleIf": "{districts} notempty"
+                         },
+                         {
+                             "type": "text",
+                             "name": "managerdetails",
+                             "title": "Substore Manager Details"
+                         },
+                         {
+                             "type": "matrixdynamic",
+                             "name": "storesdetails",
+                             "title": "Stores Details",
+                             "columns": [
+                                 {
+                                     "name": "nsn",
+                                     "title": "NSN",
+                                     "cellType": "text"
+                                 },
+                                 {
+                                     "name": "description",
+                                     "title": "Description",
+                                     "cellType": "text"
+                                 },
+                                 {
+                                     "name": "qty",
+                                     "title": "Quantity",
+                                     "cellType": "text"
+                                 }
+                             ],
+                             "choices": [
+                                 1,
+                                 2,
+                                 3,
+                                 4,
+                                 5
+                             ],
+                             "rowCount": 1
+                         },
+                         {
+                             "type": "panel",
+                             "name": "notes",
+                             "title": "NOTES AND DECLARATION",
+                             "description": "Please complete this form in all instances where authorisation is required to order a specific item within the Westminster Stores Main Ledger that includes ST19 instructions in the 'Remarks' column. Once approved, the form must be attached to your Westminster Stores Request; failure to do so may result in the cancellation of the order.\n\nI hereby declare that all the details given by me on this form are, to the best of my knowledge, true and complete.",
+                             "elements": [
+                                 {
+                                     "type": "text",
+                                     "name": "fullname",
+                                     "title": "Full Name"
+                                 },
+                                 {
+                                     "type": "text",
+                                     "name": "rank",
+                                     "title": "Rank"
+                                 },
+                                 {
+                                     "type": "text",
+                                     "name": "CFAV",
+                                     "title": "CFAV Pnumber"
+                                 }
+                             ]
                          }
                      ]
                  }
-             ]
+             ],
+             "headerView": "advanced"
          };
+
+         const powerAutomateUrl = "https://default98804ab5274143968bcf8849c3ff04.be.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/839be7abb1c045af87e270da26f85d9b/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=H7qsVXpl8-AZN12AH-bw6y95Ned5qSmMDEZKBayRTJo";
 
          window.survey = new Survey.Model(surveyJSON);
          var currentDropdown = null;
@@ -221,25 +282,47 @@
                      text: d.districtname,
                      value: d.districtvalue
                  }));
-                 var districtQuestion = survey.getQuestionByName("district");
+                 var districtQuestion = survey.getQuestionByName("districts");
                  districtQuestion.choices = districtChoices;
                  districtQuestion.value = null;
                  
-                 var unitQuestion = survey.getQuestionByName("unit");
+                 var unitQuestion = survey.getQuestionByName("units");
                  unitQuestion.choices = [];
                  unitQuestion.value = null;
              }
 
-             if (options.name === "district") {
+             if (options.name === "districts") {
                  var selectedDistrict = options.value;
                  var unitChoices = unitsData.filter(u => u.districtvalue === selectedDistrict).map(u => ({
                      text: u.unitname,
                      value: u.unitvalue
                  }));
-                 var unitQuestion = survey.getQuestionByName("unit");
+                 var unitQuestion = survey.getQuestionByName("units");
                  unitQuestion.choices = unitChoices;
                  unitQuestion.value = null;
              }
+         });
+
+         survey.onComplete.add(function(sender) {
+             var data = sender.data;
+             fetch(powerAutomateUrl, {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify(data)
+             })
+             .then(response => {
+                 if (response.ok) {
+                     alert('Form submitted successfully!');
+                 } else {
+                     alert('Error submitting form. Please try again.');
+                 }
+             })
+             .catch(error => {
+                 console.error('Error:', error);
+                 alert('Error submitting form. Please try again.');
+             });
          });
 
          $("#surveyContainer").Survey({model: survey});
