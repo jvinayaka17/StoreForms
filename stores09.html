@@ -1199,7 +1199,8 @@ const unitsData = [
           "name": "units",
           "startWithNewLine": false,
           "title": "Unit/Detachment",
-          "isRequired": true
+          "isRequired": true,
+          "visibleIf": "{districts} notempty and {districts} notcontains 'Company'"
         },
         {
           "type": "text",
