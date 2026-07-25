@@ -1040,7 +1040,7 @@
             { "unitname": "SEVENOAKS", "unitvalue": "SEVENOAKS", "districtvalue": "West Kent District" },
             { "unitname": "SEVENOAKS (JUNIOR SECTION 1)", "unitvalue": "SEVENOAKS (JUNIOR SECTION 1)", "districtvalue": "West Kent District" },
             { "unitname": "TUNBRIDGE WELLS (JUNIOR SECTION 1)", "unitvalue": "TUNBRIDGE WELLS (JUNIOR SECTION 1)", "districtvalue": "West Kent District" },
-            { "unitname": "1 Troop(X)", "unitvalue": "1 Troop(X)", "districtvalue": "X-Ray Company" },
+           /* { "unitname": "1 Troop(X)", "unitvalue": "1 Troop(X)", "districtvalue": "X-Ray Company" },
             { "unitname": "2 Troop(X)", "unitvalue": "2 Troop(X)", "districtvalue": "X-Ray Company" },
             { "unitname": "3 Troop(X)", "unitvalue": "3 Troop(X)", "districtvalue": "X-Ray Company" },
             { "unitname": "4 Troop(X)", "unitvalue": "4 Troop(X)", "districtvalue": "X-Ray Company" },
@@ -1067,7 +1067,7 @@
             { "unitname": "5 Troop(Z)", "unitvalue": "5 Troop(Z)", "districtvalue": "X-Ray Company" },
             { "unitname": "1 Troop(A)", "unitvalue": "1 Troop(A)", "districtvalue": "Alpha Company" },
             { "unitname": "2 Troop(A)", "unitvalue": "2 Troop(A)", "districtvalue": "Alpha Company" },
-            { "unitname": "3 Troop(A)", "unitvalue": "3 Troop(A)", "districtvalue": "Alpha Company" }          
+            { "unitname": "3 Troop(A)", "unitvalue": "3 Troop(A)", "districtvalue": "Alpha Company" }   */       
         ];
 
         // --- 2. FORM THEME & LOGIC ---
@@ -1263,15 +1263,20 @@
           "title": "Are Mortise Locks fitted?"
         },
         {
-          "type": "text",
-          "name": "mortiselocksinfo",
-          "visibleIf": "{Mortiselocks} = true",
-          "title": "Please provide further information",
-          "description": "need wording update from GW"
+          "type": "boolean",
+          "name": "padlock",
+          "visibleIf": "{Mortiselocks} = false",
+          "title": "If padlock used?"
         },
         {
           "type": "text",
-          "name": "measurestaken",
+          "name": "storeroom",
+          "visibleIf": "{padlock} = false",
+          "title": "How was the store room secured?"
+        },
+        {
+          "type": "text",
+          "name": "storeditems",
           "title": "How were the items stored at the time of the loss, and what security measures were in place?"
         },
         {
@@ -1283,7 +1288,13 @@
           "type": "text",
           "name": "enquirydetails",
           "visibleIf": "{enquiryheld} = true",
-          "title": "Please provide further information on the enquiry"
+          "title": "what was the result of the enquiry?"
+        },
+        {
+          "type": "text",
+          "name": "enquirynot",
+          "visibleIf": "{enquiryheld} = false",
+          "title": "can you provide details the reason for not conducting an enquiry"
         },
         {
           "type": "boolean",
@@ -1294,7 +1305,7 @@
           "type": "text",
           "name": "actionsrecovery",
           "visibleIf": "{itemsrecovered} = false",
-          "title": "If not, what actions were taken to attempt their recovery?"
+          "title": "If not, what actions were taken to attempt their recovery."
         },
         {
           "type": "text",
@@ -1324,7 +1335,7 @@
                   "title": "Quantity"
                 },
                 {
-                  "name": "damagedetails",
+                  "name": "condition",
                   "title": "Condition & damage details"
                 }
               ],
@@ -1337,7 +1348,6 @@
               ],
               "cellType": "text",
               "rowCount": 1
-              //"allowRowReorder": true
             }
           ]
         }
@@ -1366,20 +1376,14 @@
               "type": "text",
               "name": "PIN",
               "title": "CFAV Pnumber"
-            },
-            {
-              "type": "text",
-              "name": "email",
-              "title": "Email address"
-            }  
+            }
           ]
         }
       ]
     }
   ],
   "headerView": "advanced"
-            };
-
+};
             const survey = new Survey.Model(surveyJson);
             survey.applyTheme(themeJson);
 
