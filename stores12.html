@@ -1224,7 +1224,9 @@
           "type": "dropdown",
           "name": "units",
           "startWithNewLine": false,
-          "title": "Unit/Detachment"
+          "title": "Unit/Detachment",
+          "isRequired": true,
+          "visibleIf": "{districts} notempty and {districts} notcontains 'Company'"
         },
         {
           "type": "text",
