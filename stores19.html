@@ -1230,6 +1230,8 @@
           "name": "units",
           "startWithNewLine": false,
           "title": "Unit/Detachment"
+          "isRequired": true,
+          "visibleIf": "{districts} notempty and {districts} notcontains 'Company'"
         },
         {
           "type": "text",
@@ -1282,13 +1284,13 @@
             },
             {
               "type": "text",
-              "name": "email",
-              "title": "Email address"
+              "name": "PIN",
+              "title": "CFAV Pnumber"
             },
             {
               "type": "text",
-              "name": "PIN",
-              "title": "CFAV Pnumber"
+              "name": "email",
+              "title": "Email address"
             }
           ]
         }
