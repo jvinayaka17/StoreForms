@@ -1212,13 +1212,15 @@
         {
           "type": "dropdown",
           "name": "areas",
-          "title": "Area/Company"
+          "title": "Area/Company",
+          "isRequired": true
         },
         {
           "type": "dropdown",
           "name": "districts",
           "startWithNewLine": false,
-          "title": "District/Troop"
+          "title": "District/Troop",
+          "isRequired": true
         },
         {
           "type": "dropdown",
@@ -1236,7 +1238,8 @@
         {
           "type": "boolean",
           "name": "policeadvised",
-          "title": "Have the Police been advised?"
+          "title": "Have the Police been advised?",
+          "isRequired": true
         },
         {
           "type": "text",
@@ -1252,39 +1255,45 @@
         {
           "type": "text",
           "name": "datestolen",
-          "title": "Date and circumstances in which the articles were lost, stolen or damaged"
+          "title": "Date and circumstances in which the articles were lost, stolen or damaged",
+          "isRequired": true
         },
         {
           "type": "text",
           "name": "custodyitems",
-          "title": "Who had custody of the items at the time of the actual or alleged loss, theft, or damage (please specify the type of premises, e.g. building, storage facility, etc.)?"
+          "title": "Who had custody of the items at the time of the actual or alleged loss, theft, or damage (please specify the type of premises, e.g. building, storage facility, etc.)?",
+          "isRequired": true
         },
         {
           "type": "boolean",
           "name": "Mortiselocks",
-          "title": "Are Mortise Locks fitted?"
+          "title": "Are Mortise Locks fitted?",
+          "isRequired": true
         },
         {
           "type": "boolean",
           "name": "padlock",
           "visibleIf": "{Mortiselocks} = false",
-          "title": "If padlock used?"
+          "title": "If padlock used?",
+          "isRequired": true
         },
         {
           "type": "text",
           "name": "storeroom",
           "visibleIf": "{padlock} = false",
-          "title": "How was the store room secured?"
+          "title": "How was the storeroom secured?"
         },
         {
           "type": "text",
           "name": "storeditems",
-          "title": "How were the items stored at the time of the loss, and what security measures were in place?"
+          "title": "How were the items stored at the time of the loss, and what security measures were in place?",
+          "isRequired": true
         },
         {
           "type": "boolean",
           "name": "enquiryheld",
-          "title": "Whether an enquiry was conducted?"
+          "title": "Whether an enquiry was conducted?",
+          "isRequired": true
         },
         {
           "type": "text",
@@ -1301,7 +1310,8 @@
         {
           "type": "boolean",
           "name": "itemsrecovered",
-          "title": "Were the items recovered?"
+          "title": "Were the items recovered?",
+          "isRequired": true
         },
         {
           "type": "text",
@@ -1312,7 +1322,8 @@
         {
           "type": "text",
           "name": "futureaction",
-          "title": "What action, if any, has been taken to prevent this from happening again?"
+          "title": "What action, if any, has been taken to prevent this from happening again?",
+          "isRequired": true
         },
         {
           "type": "panel",
@@ -1326,7 +1337,8 @@
               "columns": [
                 {
                   "name": "nsn",
-                  "title": "NSN"
+                  "title": "NSN",
+                  "isRequired": true
                 },
                 {
                   "name": "description",
@@ -1367,22 +1379,26 @@
             {
               "type": "text",
               "name": "COname",
-              "title": "Full Name"
+              "title": "Full Name",
+              "isRequired": true
             },
             {
               "type": "text",
               "name": "rank",
-              "title": "Rank"
+              "title": "Rank",
+              "isRequired": true
             },
             {
               "type": "text",
               "name": "PIN",
-              "title": "CFAV Pnumber"
+              "title": "CFAV Pnumber",
+              "isRequired": true
             },
             {
               "type": "text",
               "name": "email",
-              "title": "Email address"
+              "title": "Email address",
+              "isRequired": true
             }
           ]
         }
