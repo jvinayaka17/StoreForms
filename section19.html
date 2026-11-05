@@ -1,0 +1,1183 @@
+<style type="text/css">#ctl00_divLeft {
+  display: none !important;
+  }
+  #ctl00_divCenter {
+	width: 100% !important;
+	margin-left: 0 !important;
+  }
+</style>
+<!-- Section 19 Standard Bus Permit — MSSC / Sea Cadets brand (same structure as the Motor Transport Request) -->
+<link href="https://fonts.googleapis.com" rel="preconnect" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">:root{
+  --navy:#0B2942;
+  --teal:#00AFDB;
+  --teal-dark:#0090B5;
+  --teal-soft:#E2F5FB;
+  --ink:#13283C;
+  --paper:#FFFFFF;
+  --paper-line:#E3ECF1;
+  --red:#C8403A;
+  --grey:#5C6E7E;
+  }
+  *{
+	box-sizing:border-box;
+  }
+  .mtc-root{
+	font-family:'Inter',system-ui,sans-serif;
+	background:var(--paper);
+	color:var(--ink);
+	max-width:760px;
+	margin:0 auto;
+	padding:0 0 64px;
+  }
+  .mtc-root h1,.mtc-root h2{
+	font-family:'Poppins',sans-serif;
+  }
+  /* Header plate */
+  .mtc-header{
+	background:var(--navy);
+	color:#fff;
+	padding:36px 32px 30px;
+	position:relative;
+	overflow:hidden;
+  }
+  .mtc-header::after{
+	content:"";
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	height:6px;
+	background:linear-gradient(90deg, var(--teal) 0%, var(--teal) 60%, #5FD3F0 100%);
+  }
+  .mtc-eyebrow{
+	font-family:'Poppins',sans-serif;
+	font-weight:700;
+	font-size:12px;
+	letter-spacing:.12em;
+	text-transform:uppercase;
+	color:var(--teal);
+	margin-bottom:10px;
+  }
+  .mtc-header h1{
+	font-size:28px;
+	font-weight:700;
+	margin:0 0 8px;
+	line-height:1.15;
+  }
+  .mtc-header p{
+	margin:0;
+	font-size:14px;
+	color:#C7D6E0;
+	max-width:54ch;
+	line-height:1.6;
+  }
+  .mtc-header strong{
+	color:#fff;
+  }
+  /* Progress / voyage strip */
+  .mtc-progress{
+	display:flex;
+	background:var(--navy);
+	padding:14px 32px 18px;
+	gap:0;
+  }
+  .mtc-stop{
+	flex:1;
+	display:flex;
+	align-items:center;
+	gap:8px;
+	font-family:'Inter',sans-serif;
+	font-weight:600;
+	font-size:12px;
+	letter-spacing:.02em;
+	color:#5C7A91;
+	position:relative;
+  }
+  .mtc-stop:not(:last-child)::after{
+	content:"";
+	position:absolute;
+	left:24px;
+	right:-50%;
+	top:7px;
+	height:1px;
+	background:#1D3F56;
+	z-index:0;
+  }
+  .mtc-stop .dot{
+	width:15px;
+	height:15px;
+	border-radius:50%;
+	border:1.5px solid #1D3F56;
+	background:var(--navy);
+	flex:none;
+	z-index:1;
+	transition:all .25s ease;
+  }
+  .mtc-stop.active .dot{
+	background:var(--teal);
+	border-color:var(--teal);
+  }
+  .mtc-stop.active{
+	color:#fff;
+  }
+  .mtc-stop .lbl{
+	position:relative;
+	z-index:2;
+  }
+  /* Checklist callout */
+  .mtc-checklist{
+	margin:28px 32px 0;
+	background:var(--teal-soft);
+	border:1px solid #C6E9F4;
+	border-left:4px solid var(--teal);
+	border-radius:8px;
+	padding:18px 20px;
+  }
+  .mtc-checklist summary{
+	cursor:pointer;
+	font-weight:700;
+	font-size:14px;
+	font-family:'Poppins',sans-serif;
+	list-style:none;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	color:var(--navy);
+  }
+  .mtc-checklist summary::-webkit-details-marker{
+	display:none;
+  }
+  .mtc-checklist summary::after{
+	content:"View requirements";
+	font-family:'Inter',sans-serif;
+	font-weight:600;
+	font-size:11px;
+	color:var(--teal-dark);
+	letter-spacing:.03em;
+	text-transform:uppercase;
+  }
+  .mtc-checklist[open] summary::after{
+	content:"Hide requirements";
+  }
+  .mtc-checklist ol{
+	margin:14px 0 0;
+	padding-left:20px;
+	font-size:13.5px;
+	line-height:1.7;
+	color:var(--ink);
+  }
+  .mtc-checklist ol ol{
+	font-size:13px;
+	color:var(--grey);
+	margin-top:2px;
+  }
+  .mtc-checklist a{
+	color:var(--navy);
+	font-weight:600;
+  }
+  .mtc-checklist .warn{
+	margin-top:14px;
+	padding:10px 12px;
+	background:#FBEFEE;
+	border-radius:6px;
+	font-size:13px;
+	color:var(--red);
+	font-weight:600;
+  }
+  form{
+	padding:0 32px;
+  }
+  .mtc-section{
+	margin-top:40px;
+	scroll-margin-top:24px;
+  }
+  .mtc-section-head{
+	display:flex;
+	align-items:baseline;
+	gap:10px;
+	border-bottom:2px solid var(--paper-line);
+	padding-bottom:10px;
+	margin-bottom:22px;
+  }
+  .mtc-section-num{
+	font-family:'Poppins',sans-serif;
+	font-weight:700;
+	font-size:12px;
+	color:#fff;
+	background:var(--teal);
+	padding:3px 9px;
+	border-radius:20px;
+  }
+  .mtc-section-head h2{
+	font-size:19px;
+	margin:0;
+	font-weight:700;
+	color:var(--navy);
+  }
+  .field{
+	margin-bottom:18px;
+  }
+  .field label{
+	display:block;
+	font-size:13.5px;
+	font-weight:600;
+	margin-bottom:6px;
+	color:var(--ink);
+  }
+  .field .hint{
+	font-weight:400;
+	color:var(--grey);
+	font-size:12.5px;
+	margin-top:4px;
+  }
+  .req{
+	color:var(--red);
+	margin-left:2px;
+  }
+  input[type=text],input[type=email],input[type=number],input[type=date],textarea,select{
+	width:100%;
+	font-family:'Inter',sans-serif;
+	font-size:14.5px;
+	padding:10px 12px;
+	border:1.5px solid #D6E1E8;
+	border-radius:8px;
+	background:#fff;
+	color:var(--ink);
+	transition:border-color .15s, box-shadow .15s;
+  }
+  textarea{
+	resize:vertical;
+	min-height:64px;
+  }
+  input:focus,textarea:focus,select:focus{
+	outline:none;
+	border-color:var(--teal);
+	box-shadow:0 0 0 3px rgba(0,175,219,.15);
+  }
+  .grid2{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	gap:16px 18px;
+  }
+  @media (max-width:560px){
+	.grid2{
+	  grid-template-columns:1fr;
+	}
+  }
+  .choice-row{
+	display:flex;
+	gap:10px;
+  }
+  .choice-pill{
+	flex:1;
+	position:relative;
+  }
+  .choice-pill input{
+	position:absolute;
+	opacity:0;
+  }
+  .choice-pill label{
+	display:block;
+	text-align:center;
+	padding:10px 8px;
+	margin:0;
+	border:1.5px solid #D6E1E8;
+	border-radius:8px;
+	font-weight:600;
+	font-size:14px;
+	color:var(--grey);
+	cursor:pointer;
+	transition:all .15s;
+  }
+  .choice-pill input:checked + label{
+	background:var(--teal);
+	color:#fff;
+	border-color:var(--teal);
+  }
+  .choice-pill input:focus-visible + label{
+	box-shadow:0 0 0 3px rgba(0,175,219,.25);
+  }
+  .conditional{
+	overflow:hidden;
+	max-height:0;
+	opacity:0;
+	transition:max-height .3s ease, opacity .25s ease, margin .3s ease;
+	margin-top:0;
+  }
+  .conditional.open{
+	max-height:400px;
+	opacity:1;
+	margin-top:4px;
+  }
+  .conditional-inner{
+	border-left:3px solid var(--teal-soft);
+	padding-left:16px;
+  }
+  .driver-note{
+	font-size:12.5px;
+	color:var(--grey);
+	margin:-8px 0 16px;
+  }
+  .submit-bar{
+	margin-top:44px;
+	padding-top:24px;
+	border-top:1px solid var(--paper-line);
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:16px;
+	flex-wrap:wrap;
+  }
+  .submit-bar .note{
+	font-size:12.5px;
+	color:var(--grey);
+	max-width:32ch;
+  }
+  button.mtc-submit{
+	font-family:'Poppins',sans-serif;
+	font-weight:700;
+	font-size:14.5px;
+	background:var(--teal);
+	color:#fff;
+	border:none;
+	border-radius:30px;
+	padding:14px 30px;
+	cursor:pointer;
+	transition:background .15s, transform .1s;
+	display:inline-flex;
+	align-items:center;
+	gap:8px;
+	text-transform:uppercase;
+	letter-spacing:.03em;
+  }
+  button.mtc-submit:hover{
+	background:var(--teal-dark);
+  }
+  button.mtc-submit:active{
+	transform:translateY(1px);
+  }
+  button.mtc-submit:disabled{
+	background:#A7BAC5;
+	cursor:not-allowed;
+  }
+  .mtc-error-banner{
+	display:none;
+	background:#FBF1EF;
+	border:1px solid #E8C3BE;
+	color:var(--red);
+	border-radius:5px;
+	padding:12px 14px;
+	font-size:13.5px;
+	margin:0 32px 0;
+	font-weight:500;
+  }
+  .mtc-error-banner.show{
+	display:block;
+  }
+  .field.invalid input, .field.invalid textarea, .field.invalid select{
+	border-color:var(--red);
+	box-shadow:0 0 0 3px rgba(169,58,53,.10);
+  }
+  .field.invalid > .field-error{
+	display:block;
+  }
+  .field-error{
+	display:none;
+	color:var(--red);
+	font-size:12px;
+	margin-top:5px;
+	font-weight:500;
+  }
+  /* Success state */
+  .mtc-success{
+	display:none;
+	padding:64px 32px;
+	text-align:center;
+  }
+  .mtc-success.show{
+	display:block;
+  }
+  .mtc-success .stamp{
+	width:64px;
+	height:64px;
+	border-radius:50%;
+	background:var(--teal);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	margin:0 auto 20px;
+  }
+  .mtc-success h2{
+	font-size:22px;
+	margin:0 0 8px;
+  }
+  .mtc-success p{
+	color:var(--grey);
+	font-size:14px;
+	max-width:38ch;
+	margin:0 auto;
+	line-height:1.6;
+  }
+  .mtc-success .mtc-new{
+	margin-top:28px;
+  }
+  .mtc-success .ref{
+	font-family:'Inter',sans-serif;
+	font-weight:600;
+	font-size:12px;
+	color:var(--teal-dark);
+	margin-top:18px;
+  }
+  @media (prefers-reduced-motion: reduce){
+	.conditional, .mtc-stop .dot{
+	  transition:none;
+	}
+  }
+
+  /* ---- Section 19 additions ---- */
+  #mtcForm{
+	padding:0 32px;
+  }
+  input[type=tel]{
+	width:100%;
+	font-family:'Inter',sans-serif;
+	font-size:14.5px;
+	padding:10px 12px;
+	border:1.5px solid #D6E1E8;
+	border-radius:8px;
+	background:#fff;
+	color:var(--ink);
+	transition:border-color .15s, box-shadow .15s;
+  }
+  .field label + .hint{
+	margin:-2px 0 8px;
+  }
+  .section-intro{
+	font-size:12.5px;
+	color:var(--grey);
+	margin:-12px 0 20px;
+  }
+  #cicConditional.open{
+	max-height:1600px;
+  }
+  .check-list{
+	display:grid;
+	gap:8px;
+  }
+  .field label.check-item{
+	display:flex;
+	align-items:flex-start;
+	gap:10px;
+	margin:0;
+	padding:10px 12px;
+	border:1.5px solid #D6E1E8;
+	border-radius:8px;
+	font-weight:500;
+	font-size:14px;
+	cursor:pointer;
+	transition:all .15s;
+  }
+  .check-item input{
+	width:17px;
+	height:17px;
+	margin:2px 0 0;
+	accent-color:var(--teal-dark);
+	flex:none;
+  }
+  .field label.check-item:has(input:checked){
+	border-color:var(--teal);
+	background:var(--teal-soft);
+  }
+  .field label.check-item.locked{
+	cursor:default;
+  }
+  .field label.check-item.unavailable{
+	cursor:default;
+	opacity:.55;
+  }
+  .field label.check-item.agree{
+	font-weight:600;
+  }
+  .field.invalid .choice-pill label, .field.invalid label.check-item{
+	border-color:var(--red);
+  }
+  .declaration-box{
+	border:1px solid var(--paper-line);
+	border-radius:8px;
+	padding:16px 20px;
+	margin-bottom:14px;
+	font-size:13.5px;
+	line-height:1.6;
+	max-height:340px;
+	overflow:auto;
+  }
+  .declaration-box h3{
+	font-family:'Poppins',sans-serif;
+	font-size:14px;
+	margin:14px 0 4px;
+	color:var(--navy);
+  }
+  .declaration-box p{
+	margin:0 0 10px;
+  }
+  .declaration-box ul{
+	margin:4px 0;
+	padding-left:20px;
+  }
+  .declaration-box a{
+	color:var(--navy);
+	font-weight:600;
+  }
+  .declaration-warn{
+	margin:0 0 18px;
+	padding:10px 12px;
+	background:#FBEFEE;
+	border-radius:6px;
+	font-size:13px;
+	color:var(--red);
+	font-weight:600;
+  }
+  @media (max-width:560px){
+	.mtc-header{ padding:28px 20px 24px; }
+	.mtc-progress{ padding:14px 20px 16px; }
+	.mtc-checklist{ margin:24px 20px 0; }
+	#mtcForm{ padding:0 20px; }
+	.mtc-error-banner{ margin:0 20px; }
+  }
+  .field .hint p{
+	margin:0 0 6px;
+  }
+  .field .hint p:last-child{
+	margin-bottom:0;
+  }
+  .field .hint a{
+	color:var(--navy);
+	font-weight:600;
+  }
+  .notice{
+	background:var(--teal-soft);
+	border-left:4px solid var(--teal);
+	border-radius:6px;
+	padding:12px 14px;
+	font-size:13px;
+	line-height:1.6;
+	margin:4px 0 22px;
+  }
+  .notice strong{
+	color:var(--navy);
+  }
+</style>
+<div class="mtc-root">
+  <div class="mtc-header">
+	<div class="mtc-eyebrow">MSSC · Motor Transport Coordination</div>
+	<h1>Section 19 Standard Bus Permit</h1>
+	<p>Apply for a permit to carry cadets and volunteers in minibuses with 9 to 16 passenger seats. It takes about <strong>15 minutes</strong>. Your application goes to the Logistics &amp; Motor Transport Operative (LMTO) for checking.</p>
+  </div>
+  <div class="mtc-progress">
+	<div class="mtc-stop active" data-stop="1"><span class="lbl">Unit</span></div>
+	<div class="mtc-stop" data-stop="2"><span class="lbl">Eligibility</span></div>
+	<div class="mtc-stop" data-stop="3"><span class="lbl">Permits</span></div>
+	<div class="mtc-stop" data-stop="4"><span class="lbl">Declaration</span></div>
+  </div>
+  <details class="mtc-checklist">
+	<summary>Before you apply for a permit</summary>
+	<ol>
+	  <li>A section 19 permit is only for units concerned with education, religion, social welfare, recreation or other activities of benefit to the community.</li>
+	  <li>Standard permits cover vehicles adapted to carry no more than 16 passengers, excluding the driver.</li>
+	  <li>The permit covers your members and the people your unit exists to help. It can’t be used to carry members of the general public.</li>
+	  <li>MSSC applies under the non-commercial purposes exemption. Read the <a href="https://www.gov.uk/government/publications/section-19-and-22-permits-not-for-profit-passenger-transport/section-19-and-22-permits-not-for-profit-passenger-transport" rel="noopener" target="_blank">section 19 guidance on GOV.UK</a>.</li>
+	  <li>You’re responsible for keeping vehicles maintained and using drivers with the right qualifications.</li>
+	  <li>Have ready: your charity or company number (if any), maintenance garage details and any existing permit or licence numbers.</li>
+	  <li>Questions? Email <a href="mailto:motortransport@ms-sc.org">motortransport@ms-sc.org</a> or call SCC Stores on 023 8251 5345.</li>
+	</ol>
+	<div class="warn">Giving false information or modifying this form to obtain a permit is an offence and could lead to prosecution or your vehicle being impounded.</div>
+  </details>
+  <div class="mtc-error-banner" id="errorBanner">Please complete the highlighted fields before submitting.</div>
+  <div aria-label="Section 19 Standard Bus Permit application" id="mtcForm" role="form">
+	<input name="formId" type="hidden" value="section19-standard-permit" />
+	<!-- SECTION 1 -->
+	<div class="mtc-section" data-stop="1" id="section-1">
+	  <div class="mtc-section-head"><span class="mtc-section-num">01</span><h2>Unit Details</h2></div>
+	  <div class="field" data-name="unitName"><label for="unitName">Name of SCC unit applying <span class="req">*</span></label>
+		<div class="hint">This must match the registered entity, if applicable. Tip: click the list and start typing your unit name to jump to it.</div>
+		<select id="unitName" name="unitName" required=""><option disabled="disabled" selected="selected" value="">Select your unit</option><option value="ABERDEEN">ABERDEEN</option><option value="ABERYSTWYTH">ABERYSTWYTH</option><option value="ABINGDON">ABINGDON</option><option value="ACCRINGTON AND DISTRICT">ACCRINGTON AND DISTRICT</option><option value="AIRDRIE AND COATBRIDGE">AIRDRIE AND COATBRIDGE</option><option value="ALTRINCHAM SALE AND STRETFORD">ALTRINCHAM SALE AND STRETFORD</option><option value="ALTRINCHAM SALE AND STRETFORD (VENGENCE DIVISION)">ALTRINCHAM SALE AND STRETFORD (VENGENCE DIVISION)</option><option value="ALTRINCHAM SALE AND STRETFORD (WYTHENSHAWE DIVISION)">ALTRINCHAM SALE AND STRETFORD (WYTHENSHAWE DIVISION)</option><option value="ARBROATH">ARBROATH</option><option value="ARDROSSAN">ARDROSSAN</option><option value="ASHFORD">ASHFORD</option><option value="ASHINGTON">ASHINGTON</option><option value="AVONMOUTH">AVONMOUTH</option><option value="AXBRIDGE AND CHEDDAR VALLEY">AXBRIDGE AND CHEDDAR VALLEY</option><option value="AYLESBURY">AYLESBURY</option><option value="AYR">AYR</option><option value="BALLYMENA">BALLYMENA</option><option value="BANBURY">BANBURY</option><option value="BANGOR">BANGOR</option><option value="BARNSLEY">BARNSLEY</option><option value="BARNSTAPLE">BARNSTAPLE</option><option value="BARROW-IN-FURNESS">BARROW-IN-FURNESS</option><option value="BARRY">BARRY</option><option value="BASILDON">BASILDON</option><option value="BASINGSTOKE AND DEANE">BASINGSTOKE AND DEANE</option><option value="BEBINGTON">BEBINGTON</option><option value="BECCLES">BECCLES</option><option value="BECCLES (BECCLES FREE SCHOOL DIVISION)">BECCLES (BECCLES FREE SCHOOL DIVISION)</option><option value="BECKENHAM AND PENGE">BECKENHAM AND PENGE</option><option value="BEDFORD">BEDFORD</option><option value="BELFAST (EAGLE)">BELFAST (EAGLE)</option><option value="BELFAST (FORMIDABLE)">BELFAST (FORMIDABLE)</option><option value="BERMUDA (HAMILTON)">BERMUDA (HAMILTON)</option><option value="BERMUDA (ST.GEORGES)">BERMUDA (ST.GEORGES)</option><option value="BEXLEY AND LEWISHAM">BEXLEY AND LEWISHAM</option><option value="BIDEFORD AND DISTRICT">BIDEFORD AND DISTRICT</option><option value="BIGGLESWADE">BIGGLESWADE</option><option value="BIRKENHEAD">BIRKENHEAD</option><option value="BIRMINGHAM (SHERBOURNE)">BIRMINGHAM (SHERBOURNE)</option><option value="BIRMINGHAM (STIRLING)">BIRMINGHAM (STIRLING)</option><option value="BIRMINGHAM (VERNON)">BIRMINGHAM (VERNON)</option><option value="BLACKBURN">BLACKBURN</option><option value="BLACKPOOL">BLACKPOOL</option><option value="BOGNOR REGIS">BOGNOR REGIS</option><option value="BOLLINGTON AND MACCLESFIELD">BOLLINGTON AND MACCLESFIELD</option><option value="BOLTON">BOLTON</option><option value="BOSTON">BOSTON</option><option value="BOURNEMOUTH">BOURNEMOUTH</option><option value="BRADFORD">BRADFORD</option><option value="BRENTWOOD">BRENTWOOD</option><option value="BRIDGE OF DON">BRIDGE OF DON</option><option value="BRIDGWATER">BRIDGWATER</option><option value="BRIDLINGTON">BRIDLINGTON</option><option value="BRIDPORT">BRIDPORT</option><option value="BRIGHTON">BRIGHTON</option><option value="BRISTOL (ADVENTURE)">BRISTOL (ADVENTURE)</option><option value="BRISTOL (KNOWLE)">BRISTOL (KNOWLE)</option><option value="BROMLEY">BROMLEY</option><option value="BROUGHTON ASTLEY (EMBRYO)">BROUGHTON ASTLEY (EMBRYO)</option><option value="BURNHAM-ON-SEA AND HIGHBRIDGE">BURNHAM-ON-SEA AND HIGHBRIDGE</option><option value="BURNLEY">BURNLEY</option><option value="BURTON-ON-TRENT">BURTON-ON-TRENT</option><option value="BURY AND RADCLIFFE">BURY AND RADCLIFFE</option><option value="BURY ST. EDMUNDS">BURY ST. EDMUNDS</option><option value="BUXTON">BUXTON</option><option value="CAMBERLEY">CAMBERLEY</option><option value="CAMBRIDGE">CAMBRIDGE</option><option value="CAMPBELTOWN">CAMPBELTOWN</option><option value="CANTERBURY">CANTERBURY</option><option value="CARDIFF">CARDIFF</option><option value="CARLISLE">CARLISLE</option><option value="CARRICKFERGUS">CARRICKFERGUS</option><option value="CASTLEFORD">CASTLEFORD</option><option value="CATERHAM">CATERHAM</option><option value="CHATHAM MARINES">CHATHAM MARINES</option><option value="CHELMSFORD">CHELMSFORD</option><option value="CHELTENHAM">CHELTENHAM</option><option value="CHESHUNT">CHESHUNT</option><option value="CHESTER">CHESTER</option><option value="CHESTER LE STREET">CHESTER LE STREET</option><option value="CHESTERFIELD">CHESTERFIELD</option><option value="CHICHESTER HARBOUR AND SELSEY">CHICHESTER HARBOUR AND SELSEY</option><option value="CHIPPENHAM">CHIPPENHAM</option><option value="CHISLEHURST AND SIDCUP">CHISLEHURST AND SIDCUP</option><option value="CHISWICK">CHISWICK</option><option value="CHORLEY">CHORLEY</option><option value="CHRISTCHURCH">CHRISTCHURCH</option><option value="CITY OF BATH">CITY OF BATH</option><option value="CITY OF DERBY">CITY OF DERBY</option><option value="CITY OF LEEDS">CITY OF LEEDS</option><option value="CITY OF LIVERPOOL">CITY OF LIVERPOOL</option><option value="CITY OF LONDON">CITY OF LONDON</option><option value="CITY OF SALFORD">CITY OF SALFORD</option><option value="CLACTON-ON-SEA">CLACTON-ON-SEA</option><option value="CLAPTON AND HACKNEY">CLAPTON AND HACKNEY</option><option value="CLYDEBANK">CLYDEBANK</option><option value="COLCHESTER">COLCHESTER</option><option value="CONNAHS QUAY">CONNAHS QUAY</option><option value="CONWY COUNTY">CONWY COUNTY</option><option value="COOKSTOWN (EMBRYO)">COOKSTOWN (EMBRYO)</option><option value="COVENTRY">COVENTRY</option><option value="COWES">COWES</option><option value="CRAWLEY">CRAWLEY</option><option value="CREWE">CREWE</option><option value="CROYDON">CROYDON</option><option value="DALBEATTIE">DALBEATTIE</option><option value="DARTFORD AND CRAYFORD">DARTFORD AND CRAYFORD</option><option value="DARTMOUTH">DARTMOUTH</option><option value="Derwenthaugh BS">Derwenthaugh BS</option><option value="DEWSBURY">DEWSBURY</option><option value="DONCASTER">DONCASTER</option><option value="DOVER AND DEAL">DOVER AND DEAL</option><option value="DUDLEY">DUDLEY</option><option value="DUMFRIES AND DALBEATTIE">DUMFRIES AND DALBEATTIE</option><option value="DUNBAR">DUNBAR</option><option value="DUNDEE">DUNDEE</option><option value="DUNDEE (HARRIS ACADEMY DIVISION)">DUNDEE (HARRIS ACADEMY DIVISION)</option><option value="DUNDONALD">DUNDONALD</option><option value="DUNSTABLE">DUNSTABLE</option><option value="EAST KILBRIDE">EAST KILBRIDE</option><option value="EASTBOURNE">EASTBOURNE</option><option value="EDGWARE AND MILL HILL">EDGWARE AND MILL HILL</option><option value="EDINBURGH (TRINITY)">EDINBURGH (TRINITY)</option><option value="EDMONTON">EDMONTON</option><option value="ELLESMERE PORT">ELLESMERE PORT</option><option value="ENFIELD">ENFIELD</option><option value="EVESHAM">EVESHAM</option><option value="EXETER">EXETER</option><option value="EXMOUTH">EXMOUTH</option><option value="FALMOUTH AND PENRYN">FALMOUTH AND PENRYN</option><option value="FARNHAM">FARNHAM</option><option value="FAVERSHAM">FAVERSHAM</option><option value="FELIXSTOWE">FELIXSTOWE</option><option value="FELTHAM AND HOUNSLOW">FELTHAM AND HOUNSLOW</option><option value="FILEY">FILEY</option><option value="FINCHLEY">FINCHLEY</option><option value="FISHGUARD">FISHGUARD</option><option value="FLEETWOOD">FLEETWOOD</option><option value="FLITWICK AND AMPTHILL">FLITWICK AND AMPTHILL</option><option value="FOLKESTONE AND HYTHE">FOLKESTONE AND HYTHE</option><option value="FOREST OF DEAN">FOREST OF DEAN</option><option value="FRASERBURGH">FRASERBURGH</option><option value="GATESHEAD">GATESHEAD</option><option value="GLASGOW">GLASGOW</option><option value="GLASTONBURY AND STREET">GLASTONBURY AND STREET</option><option value="GLOUCESTER">GLOUCESTER</option><option value="GOSFORTH">GOSFORTH</option><option value="GOSPORT">GOSPORT</option><option value="GRANGEMOUTH">GRANGEMOUTH</option><option value="GRAVESEND">GRAVESEND</option><option value="GREAT YARMOUTH">GREAT YARMOUTH</option><option value="GREENOCK">GREENOCK</option><option value="GREENWICH">GREENWICH</option><option value="GRIMSBY AND CLEETHORPES">GRIMSBY AND CLEETHORPES</option><option value="GUERNSEY">GUERNSEY</option><option value="GUILDFORD">GUILDFORD</option><option value="GUISBOROUGH AND EAST CLEVELAND">GUISBOROUGH AND EAST CLEVELAND</option><option value="HARINGEY">HARINGEY</option><option value="HARLOW">HARLOW</option><option value="HARROGATE">HARROGATE</option><option value="HARROW AND WEMBLEY">HARROW AND WEMBLEY</option><option value="HARTLEPOOL">HARTLEPOOL</option><option value="HASTINGS">HASTINGS</option><option value="HEBBURN">HEBBURN</option><option value="HEBBURN (BOLDON SCHOOL DIVISION)">HEBBURN (BOLDON SCHOOL DIVISION)</option><option value="HELENSBURGH">HELENSBURGH</option><option value="HENLEY-ON-THAMES">HENLEY-ON-THAMES</option><option value="HEREFORD">HEREFORD</option><option value="HERNE BAY">HERNE BAY</option><option value="HERTFORD AND WARE">HERTFORD AND WARE</option><option value="HIGH WYCOMBE">HIGH WYCOMBE</option><option value="HINCKLEY">HINCKLEY</option><option value="HOLYHEAD">HOLYHEAD</option><option value="HORNCHURCH AND UPMINSTER">HORNCHURCH AND UPMINSTER</option><option value="HORSHAM">HORSHAM</option><option value="HOVE AND ADUR">HOVE AND ADUR</option><option value="HOYLAKE AND WEST KIRBY">HOYLAKE AND WEST KIRBY</option><option value="HUDDERSFIELD">HUDDERSFIELD</option><option value="HULL">HULL</option><option value="HUNTINGDON">HUNTINGDON</option><option value="HUYTON WITH ROBY">HUYTON WITH ROBY</option><option value="HUYTON WITH ROBY (BROADGREEN INTERNATIONAL SCHOOL DIVISION)">HUYTON WITH ROBY (BROADGREEN INTERNATIONAL SCHOOL DIVISION)</option><option value="ILFRACOMBE">ILFRACOMBE</option><option value="IMMINGHAM">IMMINGHAM</option><option value="INVERNESS">INVERNESS</option><option value="IPSWICH">IPSWICH</option><option value="IRVINE">IRVINE</option><option value="ISLE OF DOGS (EMBRYO)">ISLE OF DOGS (EMBRYO)</option><option value="ISLE OF MAN">ISLE OF MAN</option><option value="ISLINGTON AND STOKE NEWINGTON">ISLINGTON AND STOKE NEWINGTON</option><option value="JARROW">JARROW</option><option value="JERSEY">JERSEY</option><option value="KEIGHLEY">KEIGHLEY</option><option value="KENDAL">KENDAL</option><option value="KETTERING">KETTERING</option><option value="KILKEEL AND MOURNE">KILKEEL AND MOURNE</option><option value="KINGS LYNN">KINGS LYNN</option><option value="KINGSTON AND DISTRICT">KINGSTON AND DISTRICT</option><option value="KIRKBY AND LIVERPOOL NORTH">KIRKBY AND LIVERPOOL NORTH</option><option value="LAMBETH AND WATERLOO (EMBRYO)">LAMBETH AND WATERLOO (EMBRYO)</option><option value="LARNE">LARNE</option><option value="LEAMINGTON AND WARWICK">LEAMINGTON AND WARWICK</option><option value="LEICESTER">LEICESTER</option><option value="LEITH">LEITH</option><option value="LETCHWORTH AND HITCHIN">LETCHWORTH AND HITCHIN</option><option value="LINCOLN">LINCOLN</option><option value="LISBURN">LISBURN</option><option value="LITTLEHAMPTON">LITTLEHAMPTON</option><option value="LIVERPOOL (WEST DERBY)">LIVERPOOL (WEST DERBY)</option><option value="LLANELLI">LLANELLI</option><option value="LOCHABER">LOCHABER</option><option value="LONG EATON">LONG EATON</option><option value="LOUGHBOROUGH">LOUGHBOROUGH</option><option value="LOWESTOFT">LOWESTOFT</option><option value="LUTON">LUTON</option><option value="LYTHAM ST ANNES AND FYLDE">LYTHAM ST ANNES AND FYLDE</option><option value="MAIDENHEAD">MAIDENHEAD</option><option value="MAIDSTONE">MAIDSTONE</option><option value="MAIDSTONE (WEST MALLING DIVISION)">MAIDSTONE (WEST MALLING DIVISION)</option><option value="MALDON AND DISTRICT">MALDON AND DISTRICT</option><option value="MALTA GC">MALTA GC</option><option value="MALVERN">MALVERN</option><option value="MANCHESTER (TRAFALGAR)">MANCHESTER (TRAFALGAR)</option><option value="MANSFIELD">MANSFIELD</option><option value="MARGATE">MARGATE</option><option value="MARKET HARBOROUGH">MARKET HARBOROUGH</option><option value="MARLOW">MARLOW</option><option value="MARYPORT AND SOLWAY">MARYPORT AND SOLWAY</option><option value="MEDWAY (VICTORY)">MEDWAY (VICTORY)</option><option value="MEDWAY TOWNS">MEDWAY TOWNS</option><option value="MERTON">MERTON</option><option value="METHIL">METHIL</option><option value="Middle Hill Activity Centre">Middle Hill Activity Centre</option><option value="MIDDLESBROUGH">MIDDLESBROUGH</option><option value="MIDDLETON AND CHADDERTON">MIDDLETON AND CHADDERTON</option><option value="MIDDLETON AND CHADDERTON (ST MATTHEW&#x27;S SCHOOL DIVISION)">MIDDLETON AND CHADDERTON (ST MATTHEW'S SCHOOL DIVISION)</option><option value="MILDENHALL AND NEWMARKET">MILDENHALL AND NEWMARKET</option><option value="MILFORD HAVEN">MILFORD HAVEN</option><option value="MILTON KEYNES">MILTON KEYNES</option><option value="MORAY">MORAY</option><option value="MORECAMBE AND HEYSHAM">MORECAMBE AND HEYSHAM</option><option value="MUSSELBURGH">MUSSELBURGH</option><option value="NEATH">NEATH</option><option value="NEW ROMNEY">NEW ROMNEY</option><option value="NEWARK">NEWARK</option><option value="NEWBURN">NEWBURN</option><option value="NEWBURY">NEWBURY</option><option value="NEWHAM CORNWELL VC">NEWHAM CORNWELL VC</option><option value="NEWHAVEN AND SEAFORD">NEWHAVEN AND SEAFORD</option><option value="NEWMARKET ACADEMY">NEWMARKET ACADEMY</option><option value="NEWPORT">NEWPORT</option><option value="NEWTON-LE-WILLOWS">NEWTON-LE-WILLOWS</option><option value="NEWTOWNARDS">NEWTOWNARDS</option><option value="NORTH SHIELDS">NORTH SHIELDS</option><option value="NORTHAMPTON">NORTHAMPTON</option><option value="NORTHAMPTON (BRACKLEY DIVISION)">NORTHAMPTON (BRACKLEY DIVISION)</option><option value="NORWICH">NORWICH</option><option value="NOTTINGHAM">NOTTINGHAM</option><option value="NUNEATON AND BEDWORTH">NUNEATON AND BEDWORTH</option><option value="OBAN">OBAN</option><option value="OLDHAM">OLDHAM</option><option value="ORKNEY">ORKNEY</option><option value="ORPINGTON">ORPINGTON</option><option value="OXFORD">OXFORD</option><option value="PADSTOW">PADSTOW</option><option value="PAISLEY">PAISLEY</option><option value="PARKSTONE">PARKSTONE</option><option value="PENARTH">PENARTH</option><option value="PENZANCE">PENZANCE</option><option value="PERSHORE">PERSHORE</option><option value="PERTH">PERTH</option><option value="PETERBOROUGH">PETERBOROUGH</option><option value="PETERBOROUGH (PETERBOROUGH UTC DIVISION)">PETERBOROUGH (PETERBOROUGH UTC DIVISION)</option><option value="PETERHEAD">PETERHEAD</option><option value="PLYMOUTH (DRAKE)">PLYMOUTH (DRAKE)</option><option value="POOLE">POOLE</option><option value="PORT TALBOT">PORT TALBOT</option><option value="PORTHCAWL">PORTHCAWL</option><option value="PORTLAND">PORTLAND</option><option value="PORTRUSH">PORTRUSH</option><option value="PORTSMOUTH">PORTSMOUTH</option><option value="PRESTON">PRESTON</option><option value="PWLLHELI AND PENLLYN">PWLLHELI AND PENLLYN</option><option value="QUEENSFERRY">QUEENSFERRY</option><option value="RAMSGATE AND BROADSTAIRS">RAMSGATE AND BROADSTAIRS</option><option value="READING">READING</option><option value="REDCAR">REDCAR</option><option value="REDDITCH AND BROMSGROVE">REDDITCH AND BROMSGROVE</option><option value="REIGATE">REIGATE</option><option value="RHONDDA">RHONDDA</option><option value="RHYL">RHYL</option><option value="RICHMOND">RICHMOND</option><option value="RICKMANSWORTH AND WATFORD">RICKMANSWORTH AND WATFORD</option><option value="ROCHDALE">ROCHDALE</option><option value="ROMSEY">ROMSEY</option><option value="ROSS ON WYE AND MONMOUTH">ROSS ON WYE AND MONMOUTH</option><option value="ROSYTH">ROSYTH</option><option value="ROTHERHAM">ROTHERHAM</option><option value="RUGBY">RUGBY</option><option value="RUISLIP">RUISLIP</option><option value="RUNCORN">RUNCORN</option><option value="RUSHDEN">RUSHDEN</option><option value="RYDE">RYDE</option><option value="RYE">RYE</option><option value="SALISBURY">SALISBURY</option><option value="SANDWELL">SANDWELL</option><option value="SCARBOROUGH">SCARBOROUGH</option><option value="SCUNTHORPE">SCUNTHORPE</option><option value="SEAHAM">SEAHAM</option><option value="SEFTON">SEFTON</option><option value="SHEFFIELD">SHEFFIELD</option><option value="SHEPPEY">SHEPPEY</option><option value="SHIRLEY">SHIRLEY</option><option value="SITTINGBOURNE AND MILTON">SITTINGBOURNE AND MILTON</option><option value="SKELMERSDALE">SKELMERSDALE</option><option value="SLOUGH">SLOUGH</option><option value="SOUTH LEICESTER">SOUTH LEICESTER</option><option value="SOUTH LIVERPOOL">SOUTH LIVERPOOL</option><option value="SOUTH SHIELDS">SOUTH SHIELDS</option><option value="SOUTHAMPTON">SOUTHAMPTON</option><option value="SOUTHEND-ON-SEA">SOUTHEND-ON-SEA</option><option value="SOUTHPORT">SOUTHPORT</option><option value="SOUTHWARK">SOUTHWARK</option><option value="ST ALBANS">ST ALBANS</option><option value="ST AUSTELL">ST AUSTELL</option><option value="ST HELENS">ST HELENS</option><option value="ST JOHN&#x27;S WOOD (EMBRYO)">ST JOHN'S WOOD (EMBRYO)</option><option value="STAFFORD AND RUGELEY">STAFFORD AND RUGELEY</option><option value="STAINES AND EGHAM">STAINES AND EGHAM</option><option value="STEVENAGE">STEVENAGE</option><option value="STEWARTRY">STEWARTRY</option><option value="STOCKPORT">STOCKPORT</option><option value="STOCKTON-ON-TEES">STOCKTON-ON-TEES</option><option value="STOKE-ON-TRENT">STOKE-ON-TRENT</option><option value="STONEHAVEN">STONEHAVEN</option><option value="STRATFORD-UPON-AVON">STRATFORD-UPON-AVON</option><option value="STROUD">STROUD</option><option value="SUNBURY AND WALTON">SUNBURY AND WALTON</option><option value="SUTTON (LONDON BOROUGH)">SUTTON (LONDON BOROUGH)</option><option value="SUTTON COLDFIELD">SUTTON COLDFIELD</option><option value="SWANSEA">SWANSEA</option><option value="SWINDON AND ROYAL WOOTTON BASSETT">SWINDON AND ROYAL WOOTTON BASSETT</option><option value="TAMESIDE">TAMESIDE</option><option value="TAMESIDE (COPLEY ACADEMY DIVISION)">TAMESIDE (COPLEY ACADEMY DIVISION)</option><option value="TAMESIDE (GREAT ACADEMY ASHTON DIVISION)">TAMESIDE (GREAT ACADEMY ASHTON DIVISION)</option><option value="TAMWORTH AND LICHFIELD">TAMWORTH AND LICHFIELD</option><option value="TAUNTON">TAUNTON</option><option value="TEIGN VALLEY">TEIGN VALLEY</option><option value="TELFORD">TELFORD</option><option value="TENBY">TENBY</option><option value="TEWKESBURY">TEWKESBURY</option><option value="THORNBURY AND DISTRICT">THORNBURY AND DISTRICT</option><option value="THORNE">THORNE</option><option value="THURROCK">THURROCK</option><option value="THURSO">THURSO</option><option value="TIVERTON">TIVERTON</option><option value="TOOTING AND BALHAM">TOOTING AND BALHAM</option><option value="TORBAY">TORBAY</option><option value="TORFAEN">TORFAEN</option><option value="TORPOINT">TORPOINT</option><option value="TROWBRIDGE">TROWBRIDGE</option><option value="TRURO">TRURO</option><option value="TUNBRIDGE WELLS">TUNBRIDGE WELLS</option><option value="TWICKENHAM">TWICKENHAM</option><option value="WAKEFIELD">WAKEFIELD</option><option value="WALLASEY">WALLASEY</option><option value="WALLSEND">WALLSEND</option><option value="WALSALL">WALSALL</option><option value="WALTHAM FOREST">WALTHAM FOREST</option><option value="WALTON-ON-THE-NAZE">WALTON-ON-THE-NAZE</option><option value="WALTON-ON-THE-NAZE (TENDRING TECHNOLOGY COLLEGE DIVISION)">WALTON-ON-THE-NAZE (TENDRING TECHNOLOGY COLLEGE DIVISION)</option><option value="WANDSWORTH">WANDSWORTH</option><option value="WARRINGTON">WARRINGTON</option><option value="WARSASH">WARSASH</option><option value="WELLINGBOROUGH">WELLINGBOROUGH</option><option value="WELLS-NEXT-THE-SEA">WELLS-NEXT-THE-SEA</option><option value="WELWYN GARDEN CITY AND HATFIELD">WELWYN GARDEN CITY AND HATFIELD</option><option value="WEST HAM">WEST HAM</option><option value="WESTERHAM">WESTERHAM</option><option value="WESTON-SUPER-MARE">WESTON-SUPER-MARE</option><option value="WEYMOUTH">WEYMOUTH</option><option value="WHITEHAVEN">WHITEHAVEN</option><option value="WHITLEY BAY">WHITLEY BAY</option><option value="WHITSTABLE">WHITSTABLE</option><option value="WICK">WICK</option><option value="WIDNES">WIDNES</option><option value="WIGAN">WIGAN</option><option value="WILLESDEN AND ST MARYLEBONE">WILLESDEN AND ST MARYLEBONE</option><option value="WINCHESTER">WINCHESTER</option><option value="WINDSOR AND ETON">WINDSOR AND ETON</option><option value="WINSFORD AND MIDDLEWICH">WINSFORD AND MIDDLEWICH</option><option value="WISBECH">WISBECH</option><option value="WOKING">WOKING</option><option value="WOLVERHAMPTON">WOLVERHAMPTON</option><option value="WORCESTER">WORCESTER</option><option value="WORKINGTON">WORKINGTON</option><option value="WORKSOP">WORKSOP</option><option value="WORTHING">WORTHING</option><option value="YEOVIL">YEOVIL</option><option value="YORK">YORK</option><option value="Not listed">My unit isn’t listed</option></select>
+		<div class="field-error">Select your unit.</div>
+		<div class="conditional" id="unitOtherConditional"><div class="conditional-inner">
+		  <div class="field" data-name="unitNameOther"><label for="unitNameOther">Unit name <span class="req">*</span></label>
+			<div class="hint">Enter your unit’s full name as registered.</div>
+			<input id="unitNameOther" name="unitNameOther" type="text" />
+			<div class="field-error">Enter the name of your unit.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="charitableStatus"><label>Does the unit have charitable status? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="charitableStatusNo" name="charitableStatus" required="" type="radio" value="No" /> <label for="charitableStatusNo">No</label></div>
+		  <div class="choice-pill"><input id="charitableStatusYes" name="charitableStatus" required="" type="radio" value="Yes" /> <label for="charitableStatusYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="charityConditional"><div class="conditional-inner">
+		  <div class="field" data-name="charityNumber"><label for="charityNumber">Registered charity number <span class="req">*</span></label>
+			<div class="hint">Your number with the Charity Commission for England and Wales or the Scottish Charity Regulator.</div>
+			<input id="charityNumber" name="charityNumber" type="text" />
+			<div class="field-error">Enter your registered charity number.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="limitedCompany"><label>Is the unit registered as a limited company with Companies House? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="limitedCompanyNo" name="limitedCompany" required="" type="radio" value="No" /> <label for="limitedCompanyNo">No</label></div>
+		  <div class="choice-pill"><input id="limitedCompanyYes" name="limitedCompany" required="" type="radio" value="Yes" /> <label for="limitedCompanyYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="companyConditional"><div class="conditional-inner">
+		  <div class="field" data-name="companiesHouseNumber"><label for="companiesHouseNumber">Companies House registration number <span class="req">*</span></label>
+			<input id="companiesHouseNumber" name="companiesHouseNumber" type="text" />
+			<div class="field-error">Enter your Companies House number.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="cicRegistered"><label>Is the unit registered as a Community Interest Company (CIC) with Companies House? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="cicRegisteredNo" name="cicRegistered" required="" type="radio" value="No" /> <label for="cicRegisteredNo">No</label></div>
+		  <div class="choice-pill"><input id="cicRegisteredYes" name="cicRegistered" required="" type="radio" value="Yes" /> <label for="cicRegisteredYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="cicConditional"><div class="conditional-inner">
+	  <div class="field" data-name="cicLimitedByGuarantee"><label>Does the CIC take the form of a company limited by guarantee without share capital? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="cicLimitedByGuaranteeNo" name="cicLimitedByGuarantee" type="radio" value="No" /> <label for="cicLimitedByGuaranteeNo">No</label></div>
+		  <div class="choice-pill"><input id="cicLimitedByGuaranteeYes" name="cicLimitedByGuarantee" type="radio" value="Yes" /> <label for="cicLimitedByGuaranteeYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		  </div>
+	  <div class="field" data-name="cicFaresCoverCosts"><label>Are fares set at a level intended to meet running costs (which can include depreciation) but not to generate a profit? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="cicFaresCoverCostsNo" name="cicFaresCoverCosts" type="radio" value="No" /> <label for="cicFaresCoverCostsNo">No</label></div>
+		  <div class="choice-pill"><input id="cicFaresCoverCostsYes" name="cicFaresCoverCosts" type="radio" value="Yes" /> <label for="cicFaresCoverCostsYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		  </div>
+	  <div class="field" data-name="cicNoDividends"><label>Is there no scope to distribute dividends to other parties in the normal course of events? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="cicNoDividendsNo" name="cicNoDividends" type="radio" value="No" /> <label for="cicNoDividendsNo">No</label></div>
+		  <div class="choice-pill"><input id="cicNoDividendsYes" name="cicNoDividends" type="radio" value="Yes" /> <label for="cicNoDividendsYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		  </div>
+	  <div class="field" data-name="cicAssetLock"><label>Is there no scope for the directors to sell any company asset for personal gain (for example, the company has an asset lock)? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="cicAssetLockNo" name="cicAssetLock" type="radio" value="No" /> <label for="cicAssetLockNo">No</label></div>
+		  <div class="choice-pill"><input id="cicAssetLockYes" name="cicAssetLock" type="radio" value="Yes" /> <label for="cicAssetLockYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		  </div>
+	  <div class="field" data-name="cicNoExcessivePay"><label>Is there clear evidence that directors aren’t paying themselves or others excessive fees or wages to produce a not-for-profit outcome? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="cicNoExcessivePayNo" name="cicNoExcessivePay" type="radio" value="No" /> <label for="cicNoExcessivePayNo">No</label></div>
+		  <div class="choice-pill"><input id="cicNoExcessivePayYes" name="cicNoExcessivePay" type="radio" value="Yes" /> <label for="cicNoExcessivePayYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		  </div>
+		  <div class="field" data-name="cicSurplusUse"><label for="cicSurplusUse">What do you do with any profit or surplus? <span class="req">*</span></label>
+			<div class="hint">Most CICs don’t meet the not-for-profit requirement, because a common reason for setting one up is to reinvest surpluses in other community activities.</div>
+			<textarea id="cicSurplusUse" name="cicSurplusUse"></textarea>
+			<div class="field-error">Explain what happens to any profit or surplus.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="correspondenceAddress"><label for="correspondenceAddress">Address for correspondence, including postcode <span class="req">*</span></label>
+		<textarea id="correspondenceAddress" name="correspondenceAddress" required=""></textarea>
+		<div class="field-error">Enter the full address, including postcode.</div>
+	  </div>
+	  <div class="grid2">
+		<div class="field" data-name="phone"><label for="phone">Telephone or mobile number <span class="req">*</span></label>
+		  <input id="phone" name="phone" required="" type="tel" />
+		  <div class="field-error">Enter a phone number.</div>
+		</div>
+		<div class="field" data-name="email"><label for="email">Email address <span class="req">*</span></label>
+		  <input id="email" name="email" required="" type="email" />
+		  <div class="field-error">Enter a valid email address.</div>
+		</div>
+	  </div>
+	  <div class="field" data-name="activities"><label>Which activities is the unit concerned with? <span class="req">*</span></label>
+		<div class="hint">Tick all that apply.</div>
+		<div class="check-list">
+		  <label class="check-item"><input id="activities0" name="activities" required="" type="checkbox" value="Education" /> <span>Education</span></label>
+		  <label class="check-item"><input id="activities1" name="activities" required="" type="checkbox" value="Religion" /> <span>Religion</span></label>
+		  <label class="check-item"><input id="activities2" name="activities" required="" type="checkbox" value="Social welfare" /> <span>Social welfare</span></label>
+		  <label class="check-item"><input id="activities3" name="activities" required="" type="checkbox" value="Recreation (standard permits only)" /> <span>Recreation (standard permits only)</span></label>
+		  <label class="check-item"><input id="activities4" name="activities" required="" type="checkbox" value="Other activities of benefit to the community" /> <span>Other activities of benefit to the community</span></label>
+		</div>
+		<div class="field-error">Select at least one activity.</div>
+		<div class="conditional" id="otherActivitiesConditional"><div class="conditional-inner">
+		  <div class="field" data-name="otherActivities"><label for="otherActivities">Please give details of the other activities <span class="req">*</span></label>
+			<div class="hint">Describe the activities and how they benefit the community.</div>
+			<textarea id="otherActivities" name="otherActivities"></textarea>
+			<div class="field-error">Describe the other activities.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="educationStatus"><label>If the unit is concerned with education, what is its status?</label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="educationStatus0" name="educationStatus" type="radio" value="State funded" /> <label for="educationStatus0">State funded</label></div>
+		  <div class="choice-pill"><input id="educationStatus1" name="educationStatus" type="radio" value="Independent" /> <label for="educationStatus1">Independent</label></div>
+		</div>
+	  </div>
+	  <div class="field" data-name="educationStatusOther"><label for="educationStatusOther">Other education status, please provide details</label>
+		<input id="educationStatusOther" name="educationStatusOther" type="text" />
+	  </div>
+	</div>
+	<!-- SECTION 2 -->
+	<div class="mtc-section" data-stop="2" id="section-2">
+	  <div class="mtc-section-head"><span class="mtc-section-num">02</span><h2>Eligibility &amp; History</h2></div>
+	  <div class="section-intro">Only organisations meeting at least one exemption can hold a section 19 permit.</div>
+	  <div class="field" data-name="exemption"><label>Which exemption(s) applies to the unit? <span class="req">*</span></label>
+		<div class="hint"><p>Only organisations which meet at least one of the following exemptions can apply for a section 19 permit.</p><p>Please consider and select each exemption that applies.</p><p>For further information please read the guidance at <a href="https://www.gov.uk/government/publications/section-19-and-22-permits-not-for-profit-passenger-transport/section-19-and-22-permits-not-for-profit-passenger-transport" rel="noopener" target="_blank">GOV.UK: Section 19 and 22 permits, not-for-profit passenger transport</a>.</p></div>
+		<div class="check-list">
+		  <label class="check-item"><input id="exemption0" name="exemption" required="" type="checkbox" value="Non-commercial purposes" /> <span>Non-commercial purposes</span></label>
+		</div>
+		<div class="field-error">Select the exemption that applies.</div>
+	  </div>
+	  <div class="field" data-name="exemptionDetails"><label for="exemptionDetails">How do you meet the eligibility for this exemption? <span class="req">*</span></label>
+		<div class="hint">Include details on surpluses, competitive procurement or tendering for contracts, the size and scale of your operation, and any cross-subsidy.</div>
+		<textarea id="exemptionDetails" name="exemptionDetails" required=""></textarea>
+		<div class="field-error">Explain how the unit meets the exemption.</div>
+	  </div>
+	  <div class="field" data-name="notForProfit"><label>Does the unit operate without the intention of making a profit across all of its activities? <span class="req">*</span></label>
+		<div class="hint">Often called operating ‘without a view to profit’.</div>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="notForProfitNo" name="notForProfit" required="" type="radio" value="No" /> <label for="notForProfitNo">No</label></div>
+		  <div class="choice-pill"><input id="notForProfitYes" name="notForProfit" required="" type="radio" value="Yes" /> <label for="notForProfitYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="profitConditional"><div class="conditional-inner">
+		  <div class="field" data-name="notForProfitDetails"><label for="notForProfitDetails">Please give details <span class="req">*</span></label>
+			<textarea id="notForProfitDetails" name="notForProfitDetails"></textarea>
+			<div class="field-error">Explain how the unit makes a profit.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="vehicleNotForProfit"><label>Please confirm that any vehicle operated under the permit, should it be granted, will be used without the intention to make a profit, either on the part of the unit or anyone else. <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="vehicleNotForProfitNo" name="vehicleNotForProfit" required="" type="radio" value="No" /> <label for="vehicleNotForProfitNo">No</label></div>
+		  <div class="choice-pill"><input id="vehicleNotForProfitYes" name="vehicleNotForProfit" required="" type="radio" value="Yes" /> <label for="vehicleNotForProfitYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+	  </div>
+	  <div class="field" data-name="notIncidentalToProfit"><label>Please confirm that the permit, should it be granted, shall not at any time be used incidentally to any activity which is carried on with a view to profit. <span class="req">*</span></label>
+		<div class="hint"><p>A permit must not be used with a view to profit nor incidentally to an activity which is itself carried on for profit.</p><p>For example, an organisation won’t be operating for profit if it runs a service from sheltered accommodation to the local supermarket.</p><p>But, if the supermarket offered to pay for the service, this service would be operated incidental to an activity which in itself is carried on with a view to profit, i.e. the supermarket. This would not be allowed under a permit.</p></div>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="notIncidentalToProfitNo" name="notIncidentalToProfit" required="" type="radio" value="No" /> <label for="notIncidentalToProfitNo">No</label></div>
+		  <div class="choice-pill"><input id="notIncidentalToProfitYes" name="notIncidentalToProfit" required="" type="radio" value="Yes" /> <label for="notIncidentalToProfitYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+	  </div>
+	  <div class="field" data-name="holdsPsvLicence"><label>Does the unit currently hold a public service vehicle operator’s licence? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="holdsPsvLicenceNo" name="holdsPsvLicence" required="" type="radio" value="No" /> <label for="holdsPsvLicenceNo">No</label></div>
+		  <div class="choice-pill"><input id="holdsPsvLicenceYes" name="holdsPsvLicence" required="" type="radio" value="Yes" /> <label for="holdsPsvLicenceYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="psvConditional"><div class="conditional-inner">
+		  <div class="field" data-name="psvLicenceNumber"><label for="psvLicenceNumber">Licence number <span class="req">*</span></label>
+			<input id="psvLicenceNumber" name="psvLicenceNumber" type="text" />
+			<div class="field-error">Enter the licence number.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="holdsPermits"><label>Does the unit currently hold any section 19 or section 22 permits? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="holdsPermitsNo" name="holdsPermits" required="" type="radio" value="No" /> <label for="holdsPermitsNo">No</label></div>
+		  <div class="choice-pill"><input id="holdsPermitsYes" name="holdsPermits" required="" type="radio" value="Yes" /> <label for="holdsPermitsYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="permitsConditional"><div class="conditional-inner">
+		  <div class="field" data-name="existingPermits"><label for="existingPermits">Permit numbers and issuing body or bodies <span class="req">*</span></label>
+			<textarea id="existingPermits" name="existingPermits"></textarea>
+			<div class="field-error">Enter the permit numbers and who issued them.</div>
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="replacingLostPermit"><label>Is this application to replace a lost or damaged section 19 permit for which you don’t have the original A4 permit document? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="replacingLostPermitNo" name="replacingLostPermit" required="" type="radio" value="No" /> <label for="replacingLostPermitNo">No</label></div>
+		  <div class="choice-pill"><input id="replacingLostPermitYes" name="replacingLostPermit" required="" type="radio" value="Yes" /> <label for="replacingLostPermitYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="lostConditional"><div class="conditional-inner">
+		  <div class="field" data-name="lostPermitNumbers"><label for="lostPermitNumbers">Permit number(s), if known</label>
+			<input id="lostPermitNumbers" name="lostPermitNumbers" type="text" />
+		  </div>
+		</div></div>
+	  </div>
+	  <div class="field" data-name="refusedOrRevoked"><label>Has the unit ever had a permit application refused or a permit revoked? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="refusedOrRevokedNo" name="refusedOrRevoked" required="" type="radio" value="No" /> <label for="refusedOrRevokedNo">No</label></div>
+		  <div class="choice-pill"><input id="refusedOrRevokedYes" name="refusedOrRevoked" required="" type="radio" value="Yes" /> <label for="refusedOrRevokedYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+		<div class="conditional" id="refusedConditional"><div class="conditional-inner">
+		  <div class="field" data-name="refusedDetails"><label for="refusedDetails">Please give details <span class="req">*</span></label>
+			<textarea id="refusedDetails" name="refusedDetails"></textarea>
+			<div class="field-error">Give details of the refusal or revocation.</div>
+		  </div>
+		</div></div>
+	  </div>
+	</div>
+	<!-- SECTION 3 -->
+	<div class="mtc-section" data-stop="3" id="section-3">
+	  <div class="mtc-section-head"><span class="mtc-section-num">03</span><h2>Permits &amp; Vehicles</h2></div>
+	  <div class="section-intro">Seat counts exclude the driver.</div>
+	  <div class="field" data-name="standardPermits"><label for="standardPermits">Standard permits: 9 to 16 passenger seats, excluding driver <span class="req">*</span></label>
+		<input id="standardPermits" name="standardPermits" required="" type="number" min="0" step="1" />
+		<div class="field-error">Enter the number of standard permits.</div>
+	  </div>
+	  <div class="grid2">
+		<div class="field" data-name="largeSingleDeckPermits"><label for="largeSingleDeckPermits">Large permits: 17+ seats, single deck <span class="req">*</span></label>
+		  <input id="largeSingleDeckPermits" name="largeSingleDeckPermits" required="" type="number" min="0" step="1" />
+		  <div class="field-error">Enter a number, or 0.</div>
+		</div>
+		<div class="field" data-name="largeDoubleDeckPermits"><label for="largeDoubleDeckPermits">Large permits: 17+ seats, double deck <span class="req">*</span></label>
+		  <input id="largeDoubleDeckPermits" name="largeDoubleDeckPermits" required="" type="number" min="0" step="1" />
+		  <div class="field-error">Enter a number, or 0.</div>
+		</div>
+	  </div>
+	  <div class="field" data-name="passengerClasses"><label>What classes of passengers will your vehicle carry? <span class="req">*</span></label>
+		<div class="hint">Please note the MSSC can only provide permits for Class A &amp; B (tick both). If you need a permit for any other class, please contact <a href="mailto:motortransport@ms-sc.org">motortransport@ms-sc.org</a>.</div>
+		<div class="check-list">
+		  <label class="check-item"><input id="passengerClassA" name="passengerClasses" required="" type="checkbox" value="Class A" /> <span><strong>Class A</strong> — Members of the unit holding the permit</span></label>
+		  <label class="check-item"><input id="passengerClassB" name="passengerClasses" required="" type="checkbox" value="Class B" /> <span><strong>Class B</strong> — Persons whom the unit exists to benefit, and persons assisting them</span></label>
+		</div>
+		<div class="field-error">Tick both Class A and Class B.</div>
+	  </div>
+	  <div class="notice"><strong>Remember:</strong> the permit holder remains responsible for the condition of vehicles inspected and/or maintained for them by agents or contractors. Information on this and on drawing up a contract can be found in the section on ‘Safety Inspection and Repair Facilities’ in the DVSA Guide to Maintaining Roadworthiness.</div>
+	  <div class="field" data-name="hiredVehiclesOnly"><label>Will you use hired-in vehicles only? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="hiredVehiclesOnlyNo" name="hiredVehiclesOnly" required="" type="radio" value="No" /> <label for="hiredVehiclesOnlyNo">No</label></div>
+		  <div class="choice-pill"><input id="hiredVehiclesOnlyYes" name="hiredVehiclesOnly" required="" type="radio" value="Yes" /> <label for="hiredVehiclesOnlyYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+	  </div>
+	  <div class="field" data-name="hasVehicles"><label>Do you already have a vehicle or vehicles? <span class="req">*</span></label>
+		<div class="choice-row">
+		  <div class="choice-pill"><input id="hasVehiclesNo" name="hasVehicles" required="" type="radio" value="No" /> <label for="hasVehiclesNo">No</label></div>
+		  <div class="choice-pill"><input id="hasVehiclesYes" name="hasVehicles" required="" type="radio" value="Yes" /> <label for="hasVehiclesYes">Yes</label></div>
+		</div>
+		<div class="field-error">Select an option.</div>
+	  </div>
+	  <div class="field" data-name="maintenanceProvider"><label for="maintenanceProvider">Who will maintain and service the vehicle? <span class="req">*</span></label>
+		<div class="hint">Name and address of the person or garage, and the facilities available.</div>
+		<textarea id="maintenanceProvider" name="maintenanceProvider" required=""></textarea>
+		<div class="field-error">Enter the name and address of the person or garage.</div>
+	  </div>
+	  <div class="field" data-name="inspectionWeeks"><label for="inspectionWeeks">How often, in weeks, will safety inspections be carried out? <span class="req">*</span></label>
+		<div class="hint"><p>Safety inspections are checks to ensure vehicles are roadworthy to the same standard as an MOT. A sample safety inspection record is attached at Annex A.</p><p>Safety inspections will usually be carried out every 6 to 13 weeks depending on the use of the vehicle. Please see the DVSA Guide to Maintaining Roadworthiness for more information.</p></div>
+		<input id="inspectionWeeks" name="inspectionWeeks" required="" type="number" min="1" max="52" step="1" />
+		<div class="field-error">Enter the number of weeks between inspections.</div>
+	  </div>
+	</div>
+	<!-- SECTION 4 -->
+	<div class="mtc-section" data-stop="4" id="section-4">
+	  <div class="mtc-section-head"><span class="mtc-section-num">04</span><h2>Declaration</h2></div>
+	  <div class="section-intro">Read the declaration, then sign on behalf of your unit.</div>
+	  <div class="declaration-box" tabindex="0">
+		<p>I am authorised by the unit applying for this permit to make this declaration on behalf of its members (or members of the local branch or group named in this application).</p>
+		<p>The unit will operate under this permit within the terms of section 19 of the Transport Act 1985 and any regulations made under it. The vehicle will only be used where it is engaged in road passenger transport exclusively for non-commercial purposes, and the laws relating to the driving and operation of vehicles used under this permit will be observed.</p>
+		<h3>Any vehicle used under the permit, owned or hired in, will:</h3>
+		<ul><li>comply with the appropriate construction requirements and conditions of fitness</li><li>be kept in a fit and serviceable condition, with regular maintenance inspections</li><li>have mechanical faults rectified promptly and before it is used again</li><li>be properly insured for the uses authorised by the permit</li></ul>
+		<h3>Drivers will:</h3>
+		<ul><li>report mechanical faults as soon as possible</li><li>hold the appropriate entitlement and qualification to drive a PSV under the permit</li><li>be informed of their legal responsibilities as the driver of a vehicle used under a permit</li></ul>
+		<p>The unit will notify <a href="mailto:motortransport@ms-sc.org">motortransport@ms-sc.org</a> within 28 days of any change that might affect the permit, if issued.</p>
+		<h3>As conditions of the permit, the unit will:</h3>
+		<ul>
+		  <li>continue to meet the not-for-profit and social welfare requirements</li>
+		  <li>keep records showing it continues to be an exempt unit within the meaning of the Transport Act 1985 and Regulation (EC) No 1071/2009 (Retained), and make them available on request to a traffic commissioner or any enforcement body</li>
+		  <li>only use vehicles with over nine passenger seats under the permits</li>
+		  <li>ensure adequate maintenance and facilities, as per the DVSA Guide to Maintaining Roadworthiness</li>
+		  <li>make sure vehicles receive the correct annual test for their class</li>
+		  <li>require drivers to hold the correct entitlement, including under the Vehicle Drivers (Certificates of Professional Competence) Regulations 2007/605, the Community Bus Regulations 2009 and the Transport Act 1985</li>
+		  <li>comply with drivers’ hours rules, specifically Regulation (EC) No 561/2006 as amended by Regulation (EC) No 1073/2009 and (EC) 165/2014</li>
+		</ul>
+	  </div>
+	  <div class="declaration-warn">Failure to comply with the conditions or undertakings on a permit can result in regulatory action against the permit holder, and failure to comply with conditions is a criminal offence.</div>
+	  <div class="field" data-name="declarationAccepted">
+		<label class="check-item agree"><input id="declarationAccepted" name="declarationAccepted" required="" type="checkbox" value="Yes" /> <span>I have read the declaration and I am authorised to make it on behalf of the unit <span class="req">*</span></span></label>
+		<div class="field-error">Confirm you have read the declaration.</div>
+	  </div>
+	  <div class="grid2">
+		<div class="field" data-name="signature"><label for="signature">Name <span class="req">*</span></label>
+		  <input id="signature" name="signature" required="" type="text" />
+		  <div class="field-error">Enter your name.</div>
+		</div>
+		<div class="field" data-name="declarationDate"><label for="declarationDate">Date <span class="req">*</span></label>
+		  <input id="declarationDate" name="declarationDate" required="" type="date" />
+		  <div class="field-error">Enter the date.</div>
+		</div>
+	  </div>
+	  <div class="field" data-name="position"><label for="position">Appointment <span class="req">*</span></label>
+		<input id="position" name="position" required="" type="text" />
+		<div class="field-error">Enter your appointment.</div>
+	  </div>
+	</div>
+	<div class="submit-bar">
+	  <div class="note">The LMTO will follow up by email with any queries before the permit is issued.</div>
+	  <button class="mtc-submit" id="submitBtn" type="button">Submit application</button>
+	</div>
+  </div>
+  <div class="mtc-success" id="successPanel">
+	<div class="stamp">
+	  <svg fill="none" height="26" viewBox="0 0 24 24" width="26"><path d="M5 13l4 4L19 7" stroke="#F2EFE6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg>
+	</div>
+	<h2>Application submitted</h2>
+	<p>Your section 19 permit application has been logged. The LMTO will be in touch if anything needs clarifying before the permit is issued.</p>
+	<div class="ref" id="refStamp">&nbsp;</div>
+	<button class="mtc-submit mtc-new" id="newAppBtn" type="button">Start a new application</button>
+  </div>
+</div>
+
+<script>
+  //<![CDATA[
+  function mtcInit(){
+	// ---- CONFIGURE THIS ----
+	// Copy this fresh from the "When an HTTP request is received" trigger of the SECTION 19 flow
+	var FLOW_URL = "https://default98804ab5274143968bcf8849c3ff04.be.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/16/workflows/5f4d43a1dee84f159c3bbf8a66e8b905/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nsbaHiQBex8AEVDeez-E_O3dBPjwt0v3Hs62Hl6sPko";
+	// -------------------------
+	var DEFAULT_BANNER = 'Please complete the highlighted fields before submitting.';
+	var formEl       = document.getElementById('mtcForm');
+	var errorBanner  = document.getElementById('errorBanner');
+	var submitBtn    = document.getElementById('submitBtn');
+	var successPanel = document.getElementById('successPanel');
+	// Stop quietly if the form HTML isn't on this page (e.g. the script was opened on its own)
+	if(!formEl || !submitBtn){
+	  console.warn('Section 19 form: #mtcForm not found on this page, so the script did nothing.');
+	  return;
+	}
+
+	// FIX 1: the page sits inside the site's own <form>, so pressing Enter in a
+	// text box posts the whole page back and wipes the application. Block that.
+	formEl.addEventListener('keydown', function(e){
+	  if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'BUTTON'){
+		e.preventDefault();
+	  }
+	});
+
+	// Default the declaration date to today
+	var dateEl = document.getElementById('declarationDate');
+	if(dateEl && !dateEl.value){
+	  var t = new Date();
+	  dateEl.value = t.getFullYear() + '-' + ('0' + (t.getMonth()+1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2);
+	}
+
+	// Conditional reveal (showValue lets a block open on 'No' as well as 'Yes')
+	function bindConditional(groupName, conditionalId, requiredIds, showValue){
+	  showValue = showValue || 'Yes';
+	  var conditional = document.getElementById(conditionalId);
+	  var radios = document.querySelectorAll('input[name="' + groupName + '"]');
+	  radios.forEach(function(r){
+		r.addEventListener('change', function(){
+		  if(!r.checked) return;
+		  var show = r.value === showValue;
+		  conditional.classList.toggle('open', show);
+		  requiredIds.forEach(function(id){
+			document.getElementById(id).required = show;
+		  });
+		  if(!show){
+			conditional.querySelectorAll('.field.invalid').forEach(function(f){ f.classList.remove('invalid'); });
+		  }
+		});
+	  });
+	}
+	bindConditional('charitableStatus','charityConditional',['charityNumber']);
+	bindConditional('limitedCompany','companyConditional',['companiesHouseNumber']);
+	bindConditional('cicRegistered','cicConditional',['cicLimitedByGuaranteeNo','cicFaresCoverCostsNo','cicNoDividendsNo','cicAssetLockNo','cicNoExcessivePayNo','cicSurplusUse']);
+	bindConditional('notForProfit','profitConditional',['notForProfitDetails'],'No');
+	bindConditional('holdsPsvLicence','psvConditional',['psvLicenceNumber']);
+	bindConditional('holdsPermits','permitsConditional',['existingPermits']);
+	bindConditional('replacingLostPermit','lostConditional',[]);
+	bindConditional('refusedOrRevoked','refusedConditional',['refusedDetails']);
+
+	// Tick boxes that open a details box
+	function bindTick(checkboxId, conditionalId, requiredIds){
+	  var box = document.getElementById(checkboxId);
+	  var conditional = document.getElementById(conditionalId);
+	  function update(){
+		conditional.classList.toggle('open', box.checked);
+		requiredIds.forEach(function(id){ document.getElementById(id).required = box.checked; });
+		if(!box.checked){
+		  conditional.querySelectorAll('.field.invalid').forEach(function(f){ f.classList.remove('invalid'); });
+		}
+	  }
+	  box.addEventListener('change', update);
+	  update();
+	}
+	bindTick('activities4','otherActivitiesConditional',['otherActivities']);
+
+	// 'My unit isn't listed'
+	var unitSelect = document.getElementById('unitName');
+	unitSelect.addEventListener('change', function(){
+	  var other = unitSelect.value === 'Not listed';
+	  document.getElementById('unitOtherConditional').classList.toggle('open', other);
+	  document.getElementById('unitNameOther').required = other;
+	});
+
+	// Progress strip
+	var sections = Array.from(document.querySelectorAll('.mtc-section'));
+	var stops    = Array.from(document.querySelectorAll('.mtc-stop'));
+	if(window.IntersectionObserver){
+	  var observer = new IntersectionObserver(function(entries){
+		entries.forEach(function(entry){
+		  if(entry.isIntersecting){
+			var idx = sections.indexOf(entry.target);
+			stops.forEach(function(s, i){
+			  s.classList.toggle('active', i === idx);
+			  s.classList.toggle('done', i < idx);
+			});
+		  }
+		});
+	  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+	  sections.forEach(function(s){ observer.observe(s); });
+	}
+
+	function clearErrors(){
+	  formEl.querySelectorAll('.field.invalid').forEach(function(f){ f.classList.remove('invalid'); });
+	  // FIX 2: after a failed send the banner text was overwritten for good,
+	  // so later validation errors wrongly said "Something went wrong".
+	  errorBanner.textContent = DEFAULT_BANNER;
+	  errorBanner.classList.remove('show');
+	}
+
+	function isHidden(el){
+	  // A field inside a closed conditional block is never required
+	  var c = el.closest('.conditional');
+	  return !!(c && !c.classList.contains('open'));
+	}
+
+	function validate(){
+	  var firstInvalid = null;
+	  var valid = true;
+	  formEl.querySelectorAll('[required]').forEach(function(el){
+		var fieldEl = el.closest('.field');
+		if(!fieldEl || isHidden(el)) return;
+		var ok;
+		if(el.name === 'passengerClasses'){
+		  // Both Class A and Class B must be ticked
+		  ok = Array.from(formEl.querySelectorAll('input[name="passengerClasses"]')).every(function(r){ return r.checked; });
+		} else if(el.type === 'radio' || el.type === 'checkbox'){
+		  var group = formEl.querySelectorAll('input[name="' + el.name + '"]');
+		  ok = Array.from(group).some(function(r){ return r.checked; });
+		} else if(el.type === 'email'){
+		  ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+		} else {
+		  ok = el.value.trim() !== '';
+		}
+		if(!ok){
+		  fieldEl.classList.add('invalid');
+		  valid = false;
+		  if(!firstInvalid) firstInvalid = fieldEl;
+		}
+	  });
+	  if(!valid){
+		errorBanner.classList.add('show');
+		if(firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+	  }
+	  return valid;
+	}
+
+	function clearOne(e){
+	  var f = e.target.closest('.field');
+	  if(f && f.classList.contains('invalid')) f.classList.remove('invalid');
+	}
+	formEl.addEventListener('input', clearOne);
+	formEl.addEventListener('change', clearOne);
+
+	function collectPayload(){
+	  var payload = {};
+	  formEl.querySelectorAll('input, select, textarea').forEach(function(el){
+		if(!el.name) return;
+		if(el.type === 'radio'){
+		  if(el.checked) payload[el.name] = el.value;
+		  else if(!(el.name in payload)) payload[el.name] = '';
+		} else if(el.type === 'checkbox'){
+		  if(!(el.name in payload)) payload[el.name] = '';
+		  if(el.checked) payload[el.name] = payload[el.name] ? payload[el.name] + '; ' + el.value : el.value;
+		} else {
+		  payload[el.name] = (el.value || '').trim();
+		}
+	  });
+	  if(payload.unitName === 'Not listed') payload.unitName = payload.unitNameOther;
+	  payload.submittedAt = new Date().toISOString();
+	  return payload;
+	}
+
+	function showFailure(msg){
+	  errorBanner.textContent = msg;
+	  errorBanner.classList.add('show');
+	  errorBanner.scrollIntoView({behavior:'smooth', block:'center'});
+	  submitBtn.disabled = false;
+	  submitBtn.textContent = 'Submit application';
+	}
+
+	window.mtcSubmit = function(e){
+	  if(e && e.preventDefault) e.preventDefault();
+	  clearErrors();
+	  if(!validate()) return false;
+	  var payload = collectPayload();
+	  submitBtn.disabled = true;
+	  submitBtn.textContent = 'Submitting...';
+
+	  // FIX 3: report the real reason a send fails instead of a generic message
+	  fetch(FLOW_URL, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(payload)
+	  }).then(function(res){
+		if(!res.ok){
+		  return res.text().then(function(body){
+			console.error('Flow returned ' + res.status, body);
+			throw new Error('status ' + res.status);
+		  });
+		}
+		formEl.style.display = 'none';
+		var checklist = document.querySelector('.mtc-checklist');
+		if(checklist) checklist.style.display = 'none';
+		errorBanner.classList.remove('show');
+		successPanel.classList.add('show');
+		document.getElementById('refStamp').textContent = 'Submitted ' + new Date().toLocaleString('en-GB');
+		successPanel.scrollIntoView({behavior:'smooth', block:'start'});
+	  }).catch(function(err){
+		console.error('Submit failed:', err, payload);
+		var detail = (err instanceof TypeError)
+		  ? 'the request was blocked or couldn’t reach the server'
+		  : err.message;
+		showFailure('Something went wrong (' + detail + '). Please try again or contact motortransport@ms-sc.org directly.');
+	  });
+	  return false;
+	};
+
+	// FIX 4: bind the button in script too, in case the site strips onclick attributes
+	submitBtn.addEventListener('click', function(e){
+	  e.preventDefault();
+	  if(!submitBtn.disabled) window.mtcSubmit();
+	});
+	submitBtn.removeAttribute('onclick');
+
+	// "Start a new application": reload the page so every answer is cleared
+	var newAppBtn = document.getElementById('newAppBtn');
+	if(newAppBtn){
+	  newAppBtn.addEventListener('click', function(e){
+		e.preventDefault();
+		window.location.href = window.location.pathname;
+	  });
+	}
+  }
+  // Wait for the page to finish loading, in case the site moves scripts into <head>
+  if(document.readyState === 'loading'){
+	document.addEventListener('DOMContentLoaded', mtcInit);
+  } else {
+	mtcInit();
+  }
+  //]]>
+</script>
